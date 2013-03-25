@@ -1,16 +1,22 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#pragma once
 
 #include <vector>
 #include <string>
 #include "glm.hpp"
 
-class Transform;
-class Collider;
-class Renderer;
-class Mesh;
-class Texture;
-class Behaviour;
+//#include "Transform
+#include "Collider.hpp"
+#include "Renderer.hpp"
+#include "Mesh.hpp"
+#include "Texture.hpp"
+#include "Behaviour.hpp"
+
+//class Transform;
+//class Collider;
+//class Renderer;
+//class Mesh;
+//class Texture;
+//class Behaviour;
 
 class GameObject
 {
@@ -53,5 +59,3 @@ class GameObject
 	protected:
 
 };
-
-#endif // GAMEOBJECT_H

@@ -1,23 +1,28 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-class Hud;
-class Renderer;
-class World;
-class Camera;
-class Light;
+#include "Hud.hpp"
+#include "Renderer.hpp"
+#include "World.hpp"
+#include "Camera.hpp"
+#include "Light.hpp"
+#include "Gameplay.h"
+
+//class Hud;
+//class Renderer;
+//class World;
+//class Camera;
+//class Light;
+
 class Game
 {
 	private: // data members
 		sf::RenderWindow * window;
 		Hud * hud;
 		Renderer * renderer;
-		World * world;
-		Camera * camera;
-		Light * light;
+		Gameplay * gameplay;
 
 		bool running;
 
@@ -36,5 +41,3 @@ class Game
 		bool checkCollisions();
 
 };
-
-#endif // GAME_H

@@ -16,9 +16,10 @@
 #include "Behaviours/WASDBehaviour.hpp"
 #include "Behaviours/RotatingBehaviour.hpp"
 #include "Collider.hpp"
+#include "Gameplay.h"
 
 Game::Game()
-:	window(NULL), hud(NULL), renderer(NULL), world(NULL), camera(NULL), light(NULL)
+:	window(NULL), hud(NULL), renderer(NULL)
 {
 	window = new sf::RenderWindow( sf::VideoMode( 800, 600 ), "Saxion Game" ); // get a window
 	std::cout << "Init Glew" << glewInit() << std::endl;
@@ -35,29 +36,14 @@ Game::~Game()
 void Game::build()
 {
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
-	camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
-		camera->setBehaviour( new WASDBehaviour( camera, window ) );
-	light = new Light( "Light", glm::vec3( 2.0f, 10.0f, 15.0f ) );
-	Mesh * suzanna = Mesh::load( "models/suzanna.obj");
-	world = new World( "World" );
-		world->add( camera );
-		world->add( light );
-		GameObject * player = new GameObject("Player", glm::vec3( 0.0, 0.0, 0.0 ));
-			player->setBehaviour( new RotatingBehaviour( player ) );
-			player->setMesh( suzanna );
-			player->setColorMap( Texture::load("models/bricks.jpg") );
-			player->setCollider( new Collider( player ) );
-			world->add( player  );
-		GameObject * enemy = new GameObject("Enemy", glm::vec3( 2,0,-5 ) );
-			enemy->setBehaviour( new KeysBehaviour( enemy ) );
-			enemy->setMesh( suzanna );
-			enemy->setColorMap( Texture::load("models/monkey.jpg") );
-			enemy->setCollider( new Collider( enemy ) );
-			world->add( enemy );
-		GameObject * floor = new GameObject("Floor", glm::vec3( 0,0,0 ) );
-			floor->setMesh( Mesh::load( "models/floor.obj" ) );
-			floor->setColorMap( Texture::load( "models/land.jpg" ) );
-			world->add( floor );
+
+    gameplay = new Gameplay(window);
+	gameplay->createWorld();
+	gameplay->createCamera(glm::vec3( 0, 1, 10 ));
+	gameplay->createLight(glm::vec3( 2.0f, 10.0f, 15.0f ));
+
+    gameplay->createCar();
+    gameplay->createTrack(glm::vec3(0.0,0.0,0.0));
 }
 
 void Game::run()
@@ -93,6 +79,7 @@ void Game::control()
 
 void Game::update( float step )
 {
+    World * world = gameplay->getWorld();
 	assert( world != NULL );
 	world->update( step );
 	checkCollisions();
@@ -100,6 +87,7 @@ void Game::update( float step )
 
 void Game::draw()
 {
+    World * world = gameplay->getWorld();
 	assert( window != NULL );
 	assert( renderer != NULL );
 	assert( world != NULL );
@@ -114,5 +102,6 @@ void Game::draw()
 
 bool Game::checkCollisions()
 {
+    World * world = gameplay->getWorld();
 	return world->checkCollisions();
 }

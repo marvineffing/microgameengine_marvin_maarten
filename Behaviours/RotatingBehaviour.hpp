@@ -1,6 +1,4 @@
-#ifndef RARTATINGBEHAVIOUR_H
-#define RARTATINGBEHAVIOUR_H
-
+#pragma once
 #include "../Behaviour.hpp"
 
 class RotatingBehaviour : public Behaviour
@@ -12,5 +10,3 @@ class RotatingBehaviour : public Behaviour
 		virtual void update( float step );
 
 };
-
-#endif // RARTATINGBEHAVIOUR_H

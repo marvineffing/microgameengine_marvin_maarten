@@ -19,6 +19,5 @@ void main( void ){
 	vec4 lightDir = normalize( vec4( light, 1.0f ) - worldPosition ); // direction of light, normalized
 	intensity = dot( worldNormal, lightDir ); // get overlap normal and lightdir
 	intensity = clamp( intensity, 0.0f, 1.0f ); // set boundaries
-
 	texCoord = uv; // gives interpolated uv in fs
 }

@@ -1,5 +1,4 @@
-#ifndef MYGLM_H
-#define MYGLM_H
+#pragma once
 
 #include <iostream>
 #include <iomanip>
@@ -49,5 +48,3 @@ inline std::ostream & operator << ( std::ostream & out, const glm::mat4 & m ) {
 	}
 	return out;
 }
-
-#endif // MYGLM_H

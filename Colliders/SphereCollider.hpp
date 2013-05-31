@@ -1,8 +1,6 @@
-#ifndef SPHERECOLLISION_H
-#define SPHERECOLLISION_H
+#pragma once
 
 #include "../Collider.hpp"
-
 
 class SphereCollider : public Collider
 {
@@ -15,5 +13,3 @@ class SphereCollider : public Collider
 		virtual bool collides( Collider * otherCollider );
 		virtual bool collides( SphereCollider * otherCollider );
 };
-
-#endif // SPHERECOLLISION_H

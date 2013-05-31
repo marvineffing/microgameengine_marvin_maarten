@@ -1,5 +1,4 @@
-#ifndef WASDBEHAVIOUR_H
-#define WASDBEHAVIOUR_H
+#pragma once
 
 #include <SFML/Window.hpp>
 #include "../Behaviour.hpp"
@@ -16,5 +15,3 @@ class WASDBehaviour : public Behaviour
 
 		virtual void update( float step );
 };
-
-#endif // WASDBEHAVIOUR_H

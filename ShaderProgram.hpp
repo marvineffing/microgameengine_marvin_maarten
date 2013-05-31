@@ -1,5 +1,4 @@
-#ifndef SHADERPROGRAM_H
-#define SHADERPROGRAM_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -34,6 +33,3 @@ class ShaderProgram
 
 
 };
-
-#endif // SHADERPROGRAM_H
-

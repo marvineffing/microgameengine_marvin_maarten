@@ -10,6 +10,7 @@
 #include "Behaviours/WASDBehaviour.hpp"
 #include "Behaviours/RotatingBehaviour.hpp"
 #include "Behaviours/KeysBehaviour.hpp"
+#include "Behaviours/CameraBehaviour.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -21,11 +22,12 @@ class Gameplay {
         Camera * camera;
         Light * light;
         GameObject * car;
+        GameObject * track;
 
     public:
         Gameplay(sf::RenderWindow * window);
 
-        void createCamera(glm::vec3 position);
+        void createCamera();
         void createWorld();
         void createLight(glm::vec3 position);
         void createCar();

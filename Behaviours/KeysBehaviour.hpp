@@ -1,5 +1,4 @@
-#ifndef KEYSBEHAVIOUR_H
-#define KEYSBEHAVIOUR_H
+#pragma once
 
 #include "../Behaviour.hpp"
 
@@ -12,5 +11,3 @@ class KeysBehaviour : public Behaviour
 
 		virtual void update( float step );
 };
-
-#endif // KEYSBEHAVIOUR_H

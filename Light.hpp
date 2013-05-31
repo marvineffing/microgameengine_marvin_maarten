@@ -1,5 +1,4 @@
-#ifndef LIGHT_H
-#define LIGHT_H
+#pragma once
 #include <string>
 #include "GameObject.hpp"
 class Renderer;
@@ -11,5 +10,3 @@ class Light : public GameObject
 
 		void draw( Renderer * renderer, glm::mat4 parentTransform = glm::mat4(1) );
 };
-
-#endif // LIGHT_H

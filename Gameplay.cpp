@@ -1,13 +1,14 @@
 #include "Gameplay.h"
+#include <iostream>
 
 Gameplay::Gameplay(sf::RenderWindow* window) : window(window)
 {
 }
 
-void Gameplay::createCamera(glm::vec3 position)
+void Gameplay::createCamera()
 {
-    camera = new Camera( "Camera", position);
-    camera->setBehaviour( new WASDBehaviour( camera, window ) );
+    camera = new Camera( "Camera");
+    camera->setBehaviour(new CameraBehaviour(camera, car));
     world->add(camera);
 }
 
@@ -24,17 +25,23 @@ void Gameplay::createLight(glm::vec3 position)
 
 void Gameplay::createCar()
 {
-    GameObject * car = new GameObject("Enemy", glm::vec3( 2,0,-5 ) );
-   // car->setBehaviour( new KeysBehaviour( car ) );
+    car = new GameObject("Car", glm::vec3( 0,0,0 ) );
+    car->setBehaviour( new WASDBehaviour( car, window ) );
     car->setMesh( Mesh::load( "models/car.obj") );
     car->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
     car->setCollider( new Collider( car ) );
+
+    // add tires
+    GameObject* frontLeft = new GameObject("FrontLeftTire", glm::vec3(0.5f,0,0));
+    frontLeft->setMesh(Mesh::load("models/cartire.obj"));
+    car->add(frontLeft);
+
     world->add( car );
 }
 
 void Gameplay::createTrack(glm::vec3 position)
 {
-    GameObject * track = new GameObject("Track", position );
+    track = new GameObject("Track", position );
     track->setMesh( Mesh::load( "models/floor.obj" ) );
     track->setColorMap( Texture::load( "models/land.jpg" ) );
     world->add(track);

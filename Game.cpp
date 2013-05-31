@@ -21,7 +21,7 @@
 Game::Game()
 :	window(NULL), hud(NULL), renderer(NULL)
 {
-	window = new sf::RenderWindow( sf::VideoMode( 800, 600 ), "Saxion Game" ); // get a window
+	window = new sf::RenderWindow( sf::VideoMode( 800, 600 ), "Race Game Marvin en Maarten" ); // get a window
 	std::cout << "Init Glew" << glewInit() << std::endl;
 	hud = new Hud( window );
 	//window->setVerticalSyncEnabled( true ); // sync with monitor ->60 hz approx
@@ -39,10 +39,10 @@ void Game::build()
 
     gameplay = new Gameplay(window);
 	gameplay->createWorld();
-	gameplay->createCamera(glm::vec3( 0, 1, 10 ));
 	gameplay->createLight(glm::vec3( 2.0f, 10.0f, 15.0f ));
 
     gameplay->createCar();
+	gameplay->createCamera();
     gameplay->createTrack(glm::vec3(0.0,0.0,0.0));
 }
 

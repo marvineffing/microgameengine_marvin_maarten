@@ -1,5 +1,4 @@
-#ifndef TIME_H
-#define TIME_H
+#pragma once
 
 #include <SFML/System.hpp>
 
@@ -19,5 +18,3 @@ class Time
 		static float step();
 
 };
-
-#endif // TIME_H

@@ -1,6 +1,4 @@
-#ifndef FPS_H
-#define FPS_H
-
+#pragma once
 
 class FPS
 {
@@ -16,5 +14,3 @@ class FPS
 		static unsigned int count;
 		static unsigned int fps;
 };
-
-#endif // FPS_H

@@ -1,5 +1,5 @@
-#ifndef MESH_H
-#define MESH_H
+#pragma once
+
 #include <vector>
 #include <GL/glew.h>
 #include "glm.hpp"
@@ -48,5 +48,3 @@ class Mesh
 		};
 
 };
-
-#endif // MESH_H

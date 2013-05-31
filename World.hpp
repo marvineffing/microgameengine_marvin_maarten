@@ -1,5 +1,4 @@
-#ifndef WORLD_H
-#define WORLD_H
+#pragma once
 
 #include "GameObject.hpp"
 class Camera;
@@ -18,5 +17,3 @@ class World : public GameObject
 		virtual void draw( Renderer * renderer );
 
 };
-
-#endif // WORLD_H

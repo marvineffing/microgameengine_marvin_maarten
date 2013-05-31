@@ -10,12 +10,6 @@
 #include "Light.hpp"
 #include "Gameplay.h"
 
-//class Hud;
-//class Renderer;
-//class World;
-//class Camera;
-//class Light;
-
 class Game
 {
 	private: // data members

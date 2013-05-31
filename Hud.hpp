@@ -1,5 +1,4 @@
-#ifndef HUD_H
-#define HUD_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -16,5 +15,3 @@ class Hud
 
 		void draw( );
 };
-
-#endif // HUD_H

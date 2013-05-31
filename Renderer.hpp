@@ -1,5 +1,4 @@
-#ifndef RENDERER_H
-#define RENDERER_H
+#pragma once
 
 #include <GL/glew.h>
 #include <SFML/Window.hpp>
@@ -46,5 +45,3 @@ class Renderer
 	private:
 		void findLocations();
 };
-
-#endif // RENDERER_H

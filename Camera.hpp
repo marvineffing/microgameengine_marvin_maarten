@@ -1,5 +1,4 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 #include <string>
 #include "GameObject.hpp"
@@ -18,5 +17,3 @@ class Camera : public GameObject
 		void draw( Renderer * renderer, glm::mat4 parentTransform = glm::mat4(1) );
 
 };
-
-#endif // CAMERA_H

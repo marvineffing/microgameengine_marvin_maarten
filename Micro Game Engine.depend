@@ -1549,22 +1549,22 @@
 	"Camera.hpp"
 	"Light.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviour.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviour.cpp
 	<cassert>
 	<iostream>
 	"Behaviour.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviour.hpp
+1369993295 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviour.hpp
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\keysbehaviour.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\keysbehaviour.cpp
 	"KeysBehaviour.hpp"
 	<sfml/window.hpp>
 	"../GameObject.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\keysbehaviour.hpp
+1369992759 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\keysbehaviour.hpp
 	"../Behaviour.hpp"
 
-1364217866 c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameobject.hpp
+1369993191 c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameobject.hpp
 	<vector>
 	<string>
 	"glm.hpp"
@@ -1574,22 +1574,22 @@
 	"Texture.hpp"
 	"Behaviour.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\glm.hpp
+1369993709 c:\users\medragon\documents\github\microgameengine_marvin_maarten\glm.hpp
 	<iostream>
 	<iomanip>
 	<glm/glm.hpp>
 	<glm/ext.hpp>
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\rotatingbehaviour.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\rotatingbehaviour.cpp
 	"RotatingBehaviour.hpp"
 	<iostream>
 	"../glm.hpp"
 	"../GameObject.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\rotatingbehaviour.hpp
+1369992833 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\rotatingbehaviour.hpp
 	"../Behaviour.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\wasdbehaviour.cpp
+1364418116 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\wasdbehaviour.cpp
 	<iostream>
 	<cmath>
 	<SFML/Window.hpp>
@@ -1597,42 +1597,42 @@
 	"../glm.hpp"
 	"../GameObject.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\wasdbehaviour.hpp
+1369992870 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\wasdbehaviour.hpp
 	<SFML/Window.hpp>
 	"../Behaviour.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\camera.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\camera.cpp
 	"glm.hpp"
 	"Camera.hpp"
 	"Renderer.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\camera.hpp
+1369993621 c:\users\medragon\documents\github\microgameengine_marvin_maarten\camera.hpp
 	<string>
 	"GameObject.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\renderer.hpp
+1369993763 c:\users\medragon\documents\github\microgameengine_marvin_maarten\renderer.hpp
 	<GL/glew.h>
 	<SFML/Window.hpp>
 	"glm.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\collider.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\collider.cpp
 	<iostream>
 	"Collider.hpp"
 	"GameObject.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\collider.hpp
+1369993659 c:\users\medragon\documents\github\microgameengine_marvin_maarten\collider.hpp
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\fps.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\fps.cpp
 	<iostream>
 	"FPS.hpp"
 	"Time.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\fps.hpp
+1369993279 c:\users\medragon\documents\github\microgameengine_marvin_maarten\fps.hpp
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\time.hpp
+1369993811 c:\users\medragon\documents\github\microgameengine_marvin_maarten\time.hpp
 	<SFML/System.hpp>
 
-1364219736 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\game.cpp
+1369991165 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\game.cpp
 	<cassert>
 	"Time.hpp"
 	"FPS.hpp"
@@ -1651,16 +1651,16 @@
 	"Collider.hpp"
 	"Gameplay.h"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\hud.hpp
+1369993686 c:\users\medragon\documents\github\microgameengine_marvin_maarten\hud.hpp
 	<SFML/Graphics.hpp>
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\shaderprogram.hpp
+1369993790 c:\users\medragon\documents\github\microgameengine_marvin_maarten\shaderprogram.hpp
 	<string>
 	<vector>
 	<GL/glew.h>
 	"glm.hpp"
 
-1364218336 c:\users\medragon\documents\github\microgameengine_marvin_maarten\game.hpp
+1369993220 c:\users\medragon\documents\github\microgameengine_marvin_maarten\game.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Window.hpp>
 	"Hud.hpp"
@@ -1670,24 +1670,24 @@
 	"Light.hpp"
 	"Gameplay.h"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\world.hpp
+1369992721 c:\users\medragon\documents\github\microgameengine_marvin_maarten\world.hpp
 	"GameObject.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\light.hpp
+1369993729 c:\users\medragon\documents\github\microgameengine_marvin_maarten\light.hpp
 	<string>
 	"GameObject.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\mesh.hpp
+1369993775 c:\users\medragon\documents\github\microgameengine_marvin_maarten\mesh.hpp
 	<vector>
 	<GL/glew.h>
 	"glm.hpp"
 
-1363774019 c:\users\medragon\documents\github\microgameengine_marvin_maarten\texture.hpp
+1369993838 c:\users\medragon\documents\github\microgameengine_marvin_maarten\texture.hpp
 	<iostream>
 	<map>
 	<GL/glew.h>
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameobject.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameobject.cpp
 	<cassert>
 	<iostream>
 	"Renderer.hpp"
@@ -1697,7 +1697,7 @@
 	"Mesh.hpp"
 	"Texture.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\hud.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\hud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -1705,22 +1705,22 @@
 	"FPS.hpp"
 	"Hud.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\light.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\light.cpp
 	"Light.hpp"
 	"Renderer.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\main.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\main.cpp
 	<iostream>
 	"Game.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\mesh.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\mesh.cpp
 	"Mesh.hpp"
 	<map>
 	<cstring>
 	<fstream>
 	"Renderer.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\renderer.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\renderer.cpp
 	"Renderer.hpp"
 	<cassert>
 	<GL/glew.h>
@@ -1729,31 +1729,32 @@
 	"Texture.hpp"
 	"GameObject.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\shaderprogram.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\shaderprogram.cpp
 	"ShaderProgram.hpp"
 	<iostream>
 	<fstream>
 	"Texture.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\texture.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\texture.cpp
 	<SFML/Graphics.hpp>
 	"ShaderProgram.hpp"
 	"Texture.hpp"
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\time.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\time.cpp
 	"Time.hpp"
 	<iostream>
 
-1363774019 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\world.cpp
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\world.cpp
 	<cassert>
 	"World.hpp"
 	"Camera.hpp"
 	"Light.hpp"
 
-1364223305 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameplay.cpp
+1364477565 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameplay.cpp
 	"Gameplay.h"
+	<iostream>
 
-1364218359 c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameplay.h
+1364476078 c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameplay.h
 	"GameObject.hpp"
 	"World.hpp"
 	"Camera.hpp"
@@ -1763,6 +1764,24 @@
 	"Behaviours/WASDBehaviour.hpp"
 	"Behaviours/RotatingBehaviour.hpp"
 	"Behaviours/KeysBehaviour.hpp"
+	"Behaviours/CameraBehaviour.hpp"
 	<SFML/Graphics.hpp>
 	<SFML/Window.hpp>
+
+1369997560 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\camerabehaviour.cpp
+	"CameraBehaviour.hpp"
+
+1364476264 c:\users\medragon\documents\github\microgameengine_marvin_maarten\behaviours\camerabehaviour.hpp
+	"../Behaviour.hpp"
+	"../glm.hpp"
+	"../GameObject.hpp"
+
+1369993585 c:\users\medragon\documents\github\microgameengine_marvin_maarten\colliders\spherecollider.hpp
+	"../Collider.hpp"
+
+1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\colliders\spherecollider.cpp
+	<cassert>
+	<iostream>
+	"SphereCollider.hpp"
+	"../GameObject.hpp"
 

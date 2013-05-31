@@ -1,5 +1,4 @@
-#ifndef BEHAVIOUR_H
-#define BEHAVIOUR_H
+#pragma once
 
 class GameObject;
 class Behaviour
@@ -15,5 +14,3 @@ class Behaviour
 		virtual void onCollision( GameObject * otherGameObject );
 
 };
-
-#endif // BEHAVIOUR_H

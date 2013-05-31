@@ -4,25 +4,16 @@
 #include <string>
 #include "glm.hpp"
 
-//#include "Transform
 #include "Collider.hpp"
 #include "Renderer.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
 #include "Behaviour.hpp"
 
-//class Transform;
-//class Collider;
-//class Renderer;
-//class Mesh;
-//class Texture;
-//class Behaviour;
-
 class GameObject
 {
 	protected:
 		std::string name;
-		glm::mat4 transform;
 		Collider * collider;
 		Behaviour * behaviour;
 
@@ -42,6 +33,8 @@ class GameObject
 		const std::string getName();
 		glm::vec3 getLocation();
 		bool hasCollider();
+
+		glm::mat4 transform;
 
 		void setBehaviour( Behaviour * aBehaviour );
 		void setCollider( Collider * aCollider );

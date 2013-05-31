@@ -1,5 +1,4 @@
-#ifndef TEXTURE_H
-#define TEXTURE_H
+#pragma once
 
 #include <iostream>
 #include <map>
@@ -25,5 +24,3 @@ class Texture
 		GLuint getId();
 
 };
-
-#endif // TEXTURE_H

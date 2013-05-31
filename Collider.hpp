@@ -1,5 +1,4 @@
-#ifndef COLLIDER_H
-#define COLLIDER_H
+#pragma once
 
 class GameObject;
 class SphereCollider;
@@ -16,5 +15,3 @@ class Collider
 		virtual bool collides( Collider * otherCollider );
 
 };
-
-#endif // COLLIDER_H

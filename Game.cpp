@@ -17,6 +17,7 @@
 #include "Behaviours/RotatingBehaviour.hpp"
 #include "Collider.hpp"
 #include "Gameplay.h"
+#include "Skybox.h"
 
 Game::Game()
 :	window(NULL), hud(NULL), renderer(NULL)
@@ -37,8 +38,10 @@ void Game::build()
 {
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
 
+
     gameplay = new Gameplay(window);
 	gameplay->createWorld();
+	gameplay->createSkybox();
 	gameplay->createLight(glm::vec3( 2.0f, 10.0f, 15.0f ));
 
     gameplay->createCar();

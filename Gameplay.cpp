@@ -1,5 +1,6 @@
 #include "Gameplay.h"
 #include <iostream>
+#include "Skybox.h"
 
 Gameplay::Gameplay(sf::RenderWindow* window) : window(window)
 {
@@ -49,7 +50,8 @@ void Gameplay::createTrack(glm::vec3 position)
 
 void Gameplay::createSkybox()
 {
-
+    Skybox * skybox = new Skybox("Skybox", glm::vec3(0.0, 0.0, 0.0));
+    world->add(skybox);
 }
 
 World * Gameplay::getWorld()

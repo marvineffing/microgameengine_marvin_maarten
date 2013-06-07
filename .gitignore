@@ -165,5 +165,5 @@ pip-log.txt
 ## Racegame
 #############
 
-.layout
-.depend
+*.layout
+*.depend

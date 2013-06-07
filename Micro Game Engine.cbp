@@ -70,6 +70,8 @@
 		<Unit filename="Light.hpp" />
 		<Unit filename="Mesh.cpp" />
 		<Unit filename="Mesh.hpp" />
+		<Unit filename="RaceCar.cpp" />
+		<Unit filename="RaceCar.hpp" />
 		<Unit filename="Renderer.cpp" />
 		<Unit filename="Renderer.hpp" />
 		<Unit filename="ShaderProgram.cpp" />
@@ -78,6 +80,8 @@
 		<Unit filename="Texture.hpp" />
 		<Unit filename="Time.cpp" />
 		<Unit filename="Time.hpp" />
+		<Unit filename="Tire.cpp" />
+		<Unit filename="Tire.h" />
 		<Unit filename="World.cpp" />
 		<Unit filename="World.hpp" />
 		<Unit filename="glm.hpp" />

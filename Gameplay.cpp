@@ -8,7 +8,7 @@ Gameplay::Gameplay(sf::RenderWindow* window) : window(window)
 void Gameplay::createCamera()
 {
     camera = new Camera( "Camera");
-    camera->setBehaviour(new CameraBehaviour(camera, car));
+    camera->setBehaviour(new CameraBehaviour(camera, raceCar));
     world->add(camera);
 }
 
@@ -25,18 +25,13 @@ void Gameplay::createLight(glm::vec3 position)
 
 void Gameplay::createCar()
 {
-    car = new GameObject("Car", glm::vec3( 0,0,0 ) );
-    car->setBehaviour( new WASDBehaviour( car, window ) );
-    car->setMesh( Mesh::load( "models/car.obj") );
-    car->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
-    car->setCollider( new Collider( car ) );
+    raceCar = new RaceCar(glm::vec3(0,0,0));
+    raceCar->setBehaviour( new WASDBehaviour( raceCar, window ) );
+    raceCar->setMesh( Mesh::load( "models/car.obj") );
+    raceCar->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
+    raceCar->setCollider( new Collider( raceCar ) );
 
-    // add tires
-    GameObject* frontLeft = new GameObject("FrontLeftTire", glm::vec3(0.5f,0,0));
-    frontLeft->setMesh(Mesh::load("models/cartire.obj"));
-    car->add(frontLeft);
-
-    world->add( car );
+    world->add(raceCar);
 }
 
 void Gameplay::createTrack(glm::vec3 position)

@@ -1622,7 +1622,7 @@
 
 1369993659 c:\users\medragon\documents\github\microgameengine_marvin_maarten\collider.hpp
 
-1363777619 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\fps.cpp
+1370001100 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\fps.cpp
 	<iostream>
 	"FPS.hpp"
 	"Time.hpp"
@@ -1750,17 +1750,18 @@
 	"Camera.hpp"
 	"Light.hpp"
 
-1364477565 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameplay.cpp
+1370004194 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameplay.cpp
 	"Gameplay.h"
 	<iostream>
 
-1364476078 c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameplay.h
+1370004002 c:\users\medragon\documents\github\microgameengine_marvin_maarten\gameplay.h
 	"GameObject.hpp"
 	"World.hpp"
 	"Camera.hpp"
 	"Light.hpp"
 	"Mesh.hpp"
 	"Texture.hpp"
+	"RaceCar.hpp"
 	"Behaviours/WASDBehaviour.hpp"
 	"Behaviours/RotatingBehaviour.hpp"
 	"Behaviours/KeysBehaviour.hpp"
@@ -1784,4 +1785,19 @@
 	<iostream>
 	"SphereCollider.hpp"
 	"../GameObject.hpp"
+
+1370004589 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\racecar.cpp
+	"RaceCar.hpp"
+
+1370003709 c:\users\medragon\documents\github\microgameengine_marvin_maarten\racecar.hpp
+	"GameObject.hpp"
+	"Tire.h"
+
+1370002965 source:c:\users\medragon\documents\github\microgameengine_marvin_maarten\tire.cpp
+	"Tire.h"
+
+1370003617 c:\users\medragon\documents\github\microgameengine_marvin_maarten\tire.h
+	<string>
+	"glm.hpp"
+	"GameObject.hpp"
 

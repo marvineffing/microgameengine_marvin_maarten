@@ -6,6 +6,7 @@
 #include "Light.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
+#include "RaceCar.hpp"
 
 #include "Behaviours/WASDBehaviour.hpp"
 #include "Behaviours/RotatingBehaviour.hpp"
@@ -21,7 +22,7 @@ class Gameplay {
         World * world;
         Camera * camera;
         Light * light;
-        GameObject * car;
+        RaceCar * raceCar;
         GameObject * track;
 
     public:

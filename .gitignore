@@ -160,3 +160,10 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+#############
+## Racegame
+#############
+
+Micro Game Engine.layout
+Micro Game Engine.depend

@@ -31,6 +31,7 @@ void Gameplay::createCar()
     raceCar->setMesh( Mesh::load( "models/car.obj") );
     raceCar->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
     raceCar->setCollider( new Collider( raceCar ) );
+    //raceCar->rotate(180, glm::vec3(0,1.0,0));
 
     world->add(raceCar);
 }

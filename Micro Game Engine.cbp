@@ -74,6 +74,8 @@
 		<Unit filename="Renderer.hpp" />
 		<Unit filename="ShaderProgram.cpp" />
 		<Unit filename="ShaderProgram.hpp" />
+		<Unit filename="Skybox.cc" />
+		<Unit filename="Skybox.h" />
 		<Unit filename="Texture.cpp" />
 		<Unit filename="Texture.hpp" />
 		<Unit filename="Time.cpp" />

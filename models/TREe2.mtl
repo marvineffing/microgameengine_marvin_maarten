@@ -1,0 +1,25 @@
+# Blender MTL File: 'TREe2.blend'
+# Material Count: 2
+
+newmtl Blaetter
+Ns 7.843137
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.020580 0.020904 0.006935
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd F:\Dokumente und Einstellungen\Ruben\Desktop\Zania\256\Baum.png
+map_Disp C:\\Users\\Marvin\\Documents\\GitHub\\Texturen\\Natur\\Bark1_bump.jpg
+map_d F:\\Dokumente und Einstellungen\\Ruben\\Desktop\\Zania\\256\\Baum.png
+
+newmtl bark
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.266657 0.248475 0.206053
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:\Users\Marvin\Documents\GitHub\Projekte\Zania\Trees\Baum1.jpg
+map_Disp C:\\Users\\Marvin\\Documents\\GitHub\\Texturen\\Natur\\Bark1_bump.jpg

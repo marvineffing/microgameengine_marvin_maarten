@@ -40,6 +40,10 @@ void Gameplay::createCar()
     world->add( car );
 }
 
+void Gameplay::createObstacle(glm::vec3 position) {
+
+}
+
 void Gameplay::createTrack(glm::vec3 position)
 {
     track = new GameObject("Track", position );

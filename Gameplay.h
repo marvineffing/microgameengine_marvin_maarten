@@ -24,6 +24,7 @@ class Gameplay {
         Light * light;
         RaceCar * raceCar;
         GameObject * track;
+        GameObject * tree;
 
     public:
         Gameplay(sf::RenderWindow * window);
@@ -34,6 +35,7 @@ class Gameplay {
         void createCar();
         void createTrack(glm::vec3 position);
         void createSkybox();
+        void createObstacle(glm::vec3 position);
 
         World * getWorld();
 };

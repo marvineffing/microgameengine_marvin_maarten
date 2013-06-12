@@ -1,6 +1,6 @@
 #include "RaceCar.hpp"
 
-RaceCar::RaceCar(glm::vec3 position) : GameObject("RaceCar", position), _speed(0), _speed_limit(160)
+RaceCar::RaceCar(glm::vec3 position) : GameObject("RaceCar", position), _speed(0)
 {
     Mesh * tireMesh = Mesh::load("models/cartire.obj");
 
@@ -26,6 +26,51 @@ RaceCar::RaceCar(glm::vec3 position) : GameObject("RaceCar", position), _speed(0
     frontRight->rotate(180, glm::vec3(0,1.0,0));
     BackRight->transform = glm::mat4( glm::scale(BackRight->transform, glm::vec3(2.5,2.5,2.5)));
     add(BackRight);
+}
+
+void RaceCar::accelerate(float step)
+{
+    if (_speed < _speed_limit) {
+        _speed = _speed + _acceleration;
+    }
+    std::cout << "speed " << _speed << std::endl;
+    translate( glm::vec3(0.0f, 0.0f, step * _speed));
+//    translate( glm::vec3(0.0f, 0.0f, step*10 ) );
+}
+
+void RaceCar::decelerate(float step)
+{
+    if (_speed > 0) {
+        _speed = _speed - _acceleration;
+    } else if (_speed < 0) {
+        _speed = _speed + _acceleration;
+    }
+    std::cout << "speed " << _speed << std::endl;
+    translate( glm::vec3(0.0f, 0.0f, step * _speed));
+}
+
+void RaceCar::brake(float step)
+{
+
+}
+
+void RaceCar::reverseAccelerate(float step)
+{
+    if (_speed > _speed_limit_reverse) {
+        _speed = _speed - _acceleration;
+    }
+    std::cout << "speed = " << _speed << std::endl;
+    translate( glm::vec3(0.0f, 0.0f, step * _speed ) );
+//    translate( glm::vec3(0.0f, 0.0f, -step*10 ) );
+}
+
+void RaceCar::steer(float step, int direction)
+{
+    if (direction == LEFT) {
+
+    } else if (direction ==  RIGHT) {
+
+    }
 }
 
 int RaceCar::getSpeed()

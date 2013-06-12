@@ -14,13 +14,13 @@ WASDBehaviour::WASDBehaviour( GameObject * aParent, sf::Window * aWindow )
 WASDBehaviour::~WASDBehaviour()
 {
 }
+
 void WASDBehaviour::update( float step )
 {
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::W )) {
 		parent->translate( glm::vec3(0.0f, 0.0f, step*10 ) );
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A )) {
-		//parent->translate( glm::vec3( -step * 5, 0.0f, 0.0f ) );
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             parent->rotate(step*50,glm::vec3(0,1.0,0));
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -30,12 +30,9 @@ void WASDBehaviour::update( float step )
 		parent->translate( glm::vec3(0.0f, 0.0f, -step*10 ) );
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D )) {
-		//parent->translate( glm::vec3( step * 5, 0.0f, 0.0f ) );
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             parent->rotate(-step*50, glm::vec3(0,1.0,0));
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             parent->rotate(step*50, glm::vec3(0,1.0,0));
 	}
-
-	//std::cout << turnHorizontal << std::endl;
 }

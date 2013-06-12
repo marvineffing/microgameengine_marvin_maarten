@@ -9,9 +9,8 @@
 #include "RaceCar.hpp"
 
 #include "Behaviours/WASDBehaviour.hpp"
-#include "Behaviours/RotatingBehaviour.hpp"
-#include "Behaviours/KeysBehaviour.hpp"
 #include "Behaviours/CameraBehaviour.hpp"
+#include "Behaviours/RaceCarBehaviour.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>

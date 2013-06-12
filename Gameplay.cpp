@@ -1,6 +1,6 @@
-#include "Gameplay.h"
+#include "Gameplay.hpp"
 #include <iostream>
-#include "Skybox.h"
+#include "Skybox.hpp"
 
 Gameplay::Gameplay(sf::RenderWindow* window) : window(window)
 {
@@ -27,7 +27,8 @@ void Gameplay::createLight(glm::vec3 position)
 void Gameplay::createCar()
 {
     raceCar = new RaceCar(glm::vec3(0,0,0));
-    raceCar->setBehaviour( new WASDBehaviour( raceCar, window ) );
+    //raceCar->setBehaviour( new WASDBehaviour( raceCar, window ) );
+    raceCar->setBehaviour(new RaceCarBehaviour(raceCar));
     raceCar->setMesh( Mesh::load( "models/car.obj") );
     raceCar->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
     raceCar->setCollider( new Collider( raceCar ) );

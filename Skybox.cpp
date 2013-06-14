@@ -1,4 +1,4 @@
-#include "Skybox.h"
+#include "Skybox.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
 Skybox::Skybox(std::string aName, glm::vec3 aPosition )

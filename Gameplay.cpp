@@ -1,6 +1,6 @@
-#include "Gameplay.h"
+#include "Gameplay.hpp"
 #include <iostream>
-#include "Skybox.h"
+#include "Skybox.hpp"
 
 Gameplay::Gameplay(sf::RenderWindow* window) : window(window)
 {
@@ -9,7 +9,7 @@ Gameplay::Gameplay(sf::RenderWindow* window) : window(window)
 void Gameplay::createCamera()
 {
     camera = new Camera( "Camera");
-    camera->setBehaviour(new CameraBehaviour(camera, car));
+    camera->setBehaviour(new CameraBehaviour(camera, raceCar));
     world->add(camera);
 }
 
@@ -26,18 +26,15 @@ void Gameplay::createLight(glm::vec3 position)
 
 void Gameplay::createCar()
 {
-    car = new GameObject("Car", glm::vec3( 0,0,0 ) );
-    car->setBehaviour( new WASDBehaviour( car, window ) );
-    car->setMesh( Mesh::load( "models/car.obj") );
-    car->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
-    car->setCollider( new Collider( car ) );
+    raceCar = new RaceCar(glm::vec3(0,0,0));
+    //raceCar->setBehaviour( new WASDBehaviour( raceCar, window ) );
+    raceCar->setBehaviour(new RaceCarBehaviour(raceCar));
+    raceCar->setMesh( Mesh::load( "models/car.obj") );
+    raceCar->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
+    raceCar->setCollider( new Collider( raceCar ) );
+    //raceCar->rotate(180, glm::vec3(0,1.0,0));
 
-    // add tires
-    GameObject* frontLeft = new GameObject("FrontLeftTire", glm::vec3(0.5f,0,0));
-    frontLeft->setMesh(Mesh::load("models/cartire.obj"));
-    car->add(frontLeft);
-
-    world->add( car );
+    world->add(raceCar);
 }
 
 void Gameplay::createObstacle(glm::vec3 position) {

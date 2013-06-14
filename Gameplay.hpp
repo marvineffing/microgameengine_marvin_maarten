@@ -6,11 +6,11 @@
 #include "Light.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
+#include "RaceCar.hpp"
 
 #include "Behaviours/WASDBehaviour.hpp"
-#include "Behaviours/RotatingBehaviour.hpp"
-#include "Behaviours/KeysBehaviour.hpp"
 #include "Behaviours/CameraBehaviour.hpp"
+#include "Behaviours/RaceCarBehaviour.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -21,7 +21,7 @@ class Gameplay {
         World * world;
         Camera * camera;
         Light * light;
-        GameObject * car;
+        RaceCar * raceCar;
         GameObject * track;
         GameObject * tree;
 

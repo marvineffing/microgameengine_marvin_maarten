@@ -13,7 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
+					<Add directory="../../../../../MinGW/include" />
 				</Compiler>
 				<Linker>
 					<Add library="opengl32" />
@@ -48,9 +48,9 @@
 		<Unit filename="Behaviour.hpp" />
 		<Unit filename="Behaviours/CameraBehaviour.cpp" />
 		<Unit filename="Behaviours/CameraBehaviour.hpp" />
-		<Unit filename="Behaviours/KeysBehaviour.cpp" />
 		<Unit filename="Behaviours/KeysBehaviour.hpp" />
-		<Unit filename="Behaviours/RotatingBehaviour.cpp" />
+		<Unit filename="Behaviours/RaceCarBehaviour.cpp" />
+		<Unit filename="Behaviours/RaceCarBehaviour.hpp" />
 		<Unit filename="Behaviours/RotatingBehaviour.hpp" />
 		<Unit filename="Behaviours/SoundBehaviour.cc" />
 		<Unit filename="Behaviours/SoundBehaviour.h" />
@@ -67,23 +67,27 @@
 		<Unit filename="GameObject.cpp" />
 		<Unit filename="GameObject.hpp" />
 		<Unit filename="Gameplay.cpp" />
-		<Unit filename="Gameplay.h" />
+		<Unit filename="Gameplay.hpp" />
 		<Unit filename="Hud.cpp" />
 		<Unit filename="Hud.hpp" />
 		<Unit filename="Light.cpp" />
 		<Unit filename="Light.hpp" />
 		<Unit filename="Mesh.cpp" />
 		<Unit filename="Mesh.hpp" />
+		<Unit filename="RaceCar.cpp" />
+		<Unit filename="RaceCar.hpp" />
 		<Unit filename="Renderer.cpp" />
 		<Unit filename="Renderer.hpp" />
 		<Unit filename="ShaderProgram.cpp" />
 		<Unit filename="ShaderProgram.hpp" />
-		<Unit filename="Skybox.cc" />
-		<Unit filename="Skybox.h" />
+		<Unit filename="Skybox.cpp" />
+		<Unit filename="Skybox.hpp" />
 		<Unit filename="Texture.cpp" />
 		<Unit filename="Texture.hpp" />
 		<Unit filename="Time.cpp" />
 		<Unit filename="Time.hpp" />
+		<Unit filename="Tire.cpp" />
+		<Unit filename="Tire.hpp" />
 		<Unit filename="World.cpp" />
 		<Unit filename="World.hpp" />
 		<Unit filename="glm.hpp" />

@@ -1400,17 +1400,19 @@
 1369999873 c:\users\marvin\documents\github\microgameengine_marvin_maarten\behaviours\rotatingbehaviour.hpp
 	"../Behaviour.hpp"
 
-1369999873 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\behaviours\wasdbehaviour.cpp
+1371193725 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\behaviours\wasdbehaviour.cpp
 	<iostream>
 	<cmath>
 	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
 	"WASDBehaviour.hpp"
 	"../glm.hpp"
 	"../GameObject.hpp"
 
-1369999873 c:\users\marvin\documents\github\microgameengine_marvin_maarten\behaviours\wasdbehaviour.hpp
+1371193334 c:\users\marvin\documents\github\microgameengine_marvin_maarten\behaviours\wasdbehaviour.hpp
 	<SFML/Window.hpp>
 	"../Behaviour.hpp"
+	<SFML/Audio.hpp>
 
 1369999873 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\camera.cpp
 	"glm.hpp"
@@ -1443,7 +1445,7 @@
 1369999873 c:\users\marvin\documents\github\microgameengine_marvin_maarten\time.hpp
 	<SFML/System.hpp>
 
-1370000771 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\game.cpp
+1371195185 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\game.cpp
 	<cassert>
 	"Time.hpp"
 	"FPS.hpp"
@@ -1472,9 +1474,10 @@
 	<GL/glew.h>
 	"glm.hpp"
 
-1369999873 c:\users\marvin\documents\github\microgameengine_marvin_maarten\game.hpp
+1371195204 c:\users\marvin\documents\github\microgameengine_marvin_maarten\game.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
 	"Hud.hpp"
 	"Renderer.hpp"
 	"World.hpp"
@@ -1509,7 +1512,7 @@
 	"Mesh.hpp"
 	"Texture.hpp"
 
-1369999873 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\hud.cpp
+1370584922 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\hud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -1823,7 +1826,7 @@
 1370000377 c:\users\marvin\documents\github\microgameengine_marvin_maarten\skybox.h
 	"GameObject.hpp"
 
-1370000790 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\gameplay.cpp
+1370005282 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\gameplay.cpp
 	"Gameplay.h"
 	<iostream>
 	"Skybox.h"
@@ -1832,4 +1835,12 @@
 	"Skybox.h"
 	"Mesh.hpp"
 	"Texture.hpp"
+
+1371189476 source:c:\users\marvin\documents\github\microgameengine_marvin_maarten\behaviours\soundbehaviour.cc
+	"SoundBehaviour.h"
+
+1370589485 c:\users\marvin\documents\github\microgameengine_marvin_maarten\behaviours\soundbehaviour.h
+	<SFML/Audio.hpp>
+	"../Behaviour.hpp"
+	<SFML/Window.hpp>
 

@@ -18,6 +18,8 @@
 				<Linker>
 					<Add library="opengl32" />
 					<Add library="glew32" />
+					<Add library="..\..\..\..\..\MinGW\lib\sfml\libsfml-audio.a" />
+					<Add directory="C:/MinGW/lib/sfml" />
 				</Linker>
 			</Target>
 			<Target title="Linux">
@@ -50,6 +52,8 @@
 		<Unit filename="Behaviours/KeysBehaviour.hpp" />
 		<Unit filename="Behaviours/RotatingBehaviour.cpp" />
 		<Unit filename="Behaviours/RotatingBehaviour.hpp" />
+		<Unit filename="Behaviours/SoundBehaviour.cc" />
+		<Unit filename="Behaviours/SoundBehaviour.h" />
 		<Unit filename="Behaviours/WASDBehaviour.cpp" />
 		<Unit filename="Behaviours/WASDBehaviour.hpp" />
 		<Unit filename="Camera.cpp" />

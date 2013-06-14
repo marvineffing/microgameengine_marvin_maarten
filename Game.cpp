@@ -27,6 +27,9 @@ Game::Game()
 	hud = new Hud( window );
 	//window->setVerticalSyncEnabled( true ); // sync with monitor ->60 hz approx
 	renderer = new Renderer( window );
+
+	//load music file
+    music.openFromFile("sounds/hellmarch.wav");
 }
 
 Game::~Game()
@@ -51,6 +54,8 @@ void Game::build()
 
 void Game::run()
 {
+    //todo: loop music door getstatus
+    playMusic();
 	running = true;
 	while ( running ) {
 		Time::update();
@@ -61,6 +66,14 @@ void Game::run()
 			draw();
 		}
 	}
+}
+
+void Game::playMusic() {
+    music.play();
+}
+
+void Game::pauseMusic() {
+    music.pause();
 }
 
 void Game::stop()

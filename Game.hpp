@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 
 #include "Hud.hpp"
 #include "Renderer.hpp"
@@ -19,6 +20,7 @@ class Game
 		Gameplay * gameplay;
 
 		bool running;
+		sf::Music music;
 
 	public: // functions
 		Game();
@@ -27,6 +29,9 @@ class Game
 		void build();
 		void run();
 		void stop();
+
+		void playMusic();
+		void pauseMusic();
 
 	private:
 		void control();

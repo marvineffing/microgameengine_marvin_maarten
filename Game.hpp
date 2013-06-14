@@ -8,7 +8,7 @@
 #include "World.hpp"
 #include "Camera.hpp"
 #include "Light.hpp"
-#include "Gameplay.h"
+#include "Gameplay.hpp"
 
 class Game
 {

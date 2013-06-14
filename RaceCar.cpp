@@ -33,9 +33,7 @@ void RaceCar::accelerate(float step)
     if (_speed < _speed_limit) {
         _speed = _speed + _acceleration;
     }
-    std::cout << "speed " << _speed << std::endl;
-    translate( glm::vec3(0.0f, 0.0f, step * _speed));
-//    translate( glm::vec3(0.0f, 0.0f, step*10 ) );
+    translate(glm::vec3(0.0f, 0.0f, step * _speed));
 }
 
 void RaceCar::decelerate(float step)
@@ -43,15 +41,19 @@ void RaceCar::decelerate(float step)
     if (_speed > 0) {
         _speed = _speed - _acceleration;
     } else if (_speed < 0) {
-        _speed = _speed + _acceleration;
+        _speed = _speed + _deceleration;
     }
-    std::cout << "speed " << _speed << std::endl;
-    translate( glm::vec3(0.0f, 0.0f, step * _speed));
+    translate(glm::vec3(0.0f, 0.0f, step * _speed));
 }
 
 void RaceCar::brake(float step)
 {
-
+    if (_speed > 0) {
+        _speed = _speed -_fast_deceleration;
+    } else if (_speed < 0) {
+        _speed = _speed + _fast_deceleration;
+    }
+    translate(glm::vec3(0.0f, 0.0f, step * _speed));
 }
 
 void RaceCar::reverseAccelerate(float step)
@@ -59,9 +61,7 @@ void RaceCar::reverseAccelerate(float step)
     if (_speed > _speed_limit_reverse) {
         _speed = _speed - _acceleration;
     }
-    std::cout << "speed = " << _speed << std::endl;
-    translate( glm::vec3(0.0f, 0.0f, step * _speed ) );
-//    translate( glm::vec3(0.0f, 0.0f, -step*10 ) );
+    translate(glm::vec3(0.0f, 0.0f, step * _speed ) );
 }
 
 void RaceCar::steer(float step, int direction)

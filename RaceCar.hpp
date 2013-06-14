@@ -11,6 +11,8 @@ class RaceCar : public GameObject
         static const float _speed_limit = 10.0f;
         static const float _speed_limit_reverse = -5.0f;
         static const float _acceleration = 0.005f;
+        static const float _deceleration = 0.005f;
+        static const float _fast_deceleration = 0.02f;
         static const float _handeling = 5.0f;
 
     public:

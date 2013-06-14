@@ -12,12 +12,9 @@
 #include "Light.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
-#include "Behaviours/KeysBehaviour.hpp"
-#include "Behaviours/WASDBehaviour.hpp"
-#include "Behaviours/RotatingBehaviour.hpp"
 #include "Collider.hpp"
-#include "Gameplay.h"
-#include "Skybox.h"
+#include "Gameplay.hpp"
+#include "Skybox.hpp"
 
 Game::Game()
 :	window(NULL), hud(NULL), renderer(NULL)

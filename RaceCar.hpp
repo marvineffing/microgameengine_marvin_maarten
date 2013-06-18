@@ -14,6 +14,7 @@ class RaceCar : public GameObject
         static const float _deceleration = 0.005f;
         static const float _fast_deceleration = 0.02f;
         static const float _handeling = 5.0f;
+        std::vector<Tire*> _tires;
 
     public:
         static const int LEFT = 0;

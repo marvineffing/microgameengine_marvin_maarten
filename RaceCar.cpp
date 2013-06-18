@@ -5,27 +5,30 @@ RaceCar::RaceCar(glm::vec3 position) : GameObject("RaceCar", position), _speed(0
     Mesh * tireMesh = Mesh::load("models/cartire.obj");
 
     // Tires
-    Tire* frontLeft = new Tire("FrontLeftTire", glm::vec3(-0.15,0.10,-0.27));
+    Tire* frontLeft = new Tire("FrontLeftTire", glm::vec3(-0.15, 0.10, 0.32));
     frontLeft->setMesh(tireMesh);
-    frontLeft->transform = glm::mat4( glm::scale(frontLeft->transform, glm::vec3(2.5,2.5,2.5)));
-    add(frontLeft);
+    frontLeft->transform = glm::mat4(glm::scale(frontLeft->transform, glm::vec3(2.5,2.5,2.5)));
+    _tires.push_back(frontLeft);
 
-    Tire* frontRight = new Tire("FrontLeftTire", glm::vec3(0.15, 0.10, -0.27));
+    Tire* frontRight = new Tire("FrontRightTire", glm::vec3(0.15, 0.10, 0.32));
     frontRight->setMesh(tireMesh);
     frontRight->rotate(180, glm::vec3(0,1.0,0));
-    frontRight->transform = glm::mat4( glm::scale(frontRight->transform, glm::vec3(2.5,2.5,2.5)));
-    add(frontRight);
+    frontRight->transform = glm::mat4(glm::scale(frontRight->transform, glm::vec3(2.5,2.5,2.5)));
+    _tires.push_back(frontRight);
 
-    Tire* backLeft = new Tire("FrontLeftTire", glm::vec3(-0.15, 0.10, 0.32));
+    Tire* backLeft = new Tire("BackLeftTire", glm::vec3(-0.15, 0.10, -0.27));
     backLeft->setMesh(tireMesh);
-    backLeft->transform = glm::mat4( glm::scale(backLeft->transform, glm::vec3(2.5,2.5,2.5)));
-    add(backLeft);
+    backLeft->transform = glm::mat4(glm::scale(backLeft->transform, glm::vec3(2.5,2.5,2.5)));
+    _tires.push_back(backLeft);
 
-    Tire* BackRight = new Tire("FrontLeftTire", glm::vec3(0.15, 0.10, 0.32));
-    BackRight->setMesh(tireMesh);
-    frontRight->rotate(180, glm::vec3(0,1.0,0));
-    BackRight->transform = glm::mat4( glm::scale(BackRight->transform, glm::vec3(2.5,2.5,2.5)));
-    add(BackRight);
+    Tire* backRight = new Tire("BackRightTire", glm::vec3(0.15, 0.10, -0.27));
+    backRight->setMesh(tireMesh);
+    backRight->rotate(180, glm::vec3(0,1.0,0));
+    backRight->transform = glm::mat4(glm::scale(backRight->transform, glm::vec3(2.5,2.5,2.5)));
+    _tires.push_back(backRight);
+
+    for (unsigned int i = 0; i < _tires.size(); ++i)
+        add(_tires[i]);
 }
 
 void RaceCar::accelerate(float step)
@@ -38,7 +41,7 @@ void RaceCar::accelerate(float step)
 
 void RaceCar::decelerate(float step)
 {
-    if (_speed < _acceleration && _speed > 0 || _speed > _acceleration && _speed < 0) {
+    if ((_speed < _acceleration && _speed > 0) || (_speed > _acceleration && _speed < 0)) {
         _speed = 0;
     }
     if (_speed > 0) {
@@ -47,6 +50,10 @@ void RaceCar::decelerate(float step)
         _speed = _speed + _deceleration;
     }
     translate(glm::vec3(0.0f, 0.0f, step * _speed));
+
+    //TODO: wheel don't turn like the are supposed to, consider using a standalone method based on _speed.
+    for (unsigned int i = 0; i < _tires.size(); ++i)
+        _tires[i]->rotate(step*_speed,glm::vec3(0,0,1.0));
 }
 
 void RaceCar::brake(float step)
@@ -69,7 +76,10 @@ void RaceCar::reverseAccelerate(float step)
 
 void RaceCar::steer(float step, int direction)
 {
+    //TODO: Limit rotation of wheels
     if (direction == LEFT) {
+        _tires[0]->rotate(step*50,glm::vec3(0,1.0,0));
+        _tires[1]->rotate(step*50,glm::vec3(0,1.0,0));
         if (_speed > 0) {
             rotate(step*50,glm::vec3(0,1.0,0));
         }
@@ -77,6 +87,8 @@ void RaceCar::steer(float step, int direction)
             rotate(-step*50,glm::vec3(0,1.0,0));
         }
     } else if (direction ==  RIGHT) {
+        _tires[0]->rotate(-step*50,glm::vec3(0,1.0,0));
+        _tires[1]->rotate(-step*50,glm::vec3(0,1.0,0));
         if (_speed > 0) {
             rotate(-step*50,glm::vec3(0,1.0,0));
         }

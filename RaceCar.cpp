@@ -38,6 +38,9 @@ void RaceCar::accelerate(float step)
 
 void RaceCar::decelerate(float step)
 {
+    if (_speed < _acceleration && _speed > 0 || _speed > _acceleration && _speed < 0) {
+        _speed = 0;
+    }
     if (_speed > 0) {
         _speed = _speed - _acceleration;
     } else if (_speed < 0) {
@@ -67,9 +70,19 @@ void RaceCar::reverseAccelerate(float step)
 void RaceCar::steer(float step, int direction)
 {
     if (direction == LEFT) {
-
+        if (_speed > 0) {
+            rotate(step*50,glm::vec3(0,1.0,0));
+        }
+        if (_speed < 0) {
+            rotate(-step*50,glm::vec3(0,1.0,0));
+        }
     } else if (direction ==  RIGHT) {
-
+        if (_speed > 0) {
+            rotate(-step*50,glm::vec3(0,1.0,0));
+        }
+        if (_speed < 0) {
+            rotate(step*50,glm::vec3(0,1.0,0));
+        }
     }
 }
 

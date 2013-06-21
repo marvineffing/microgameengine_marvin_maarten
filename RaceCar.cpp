@@ -29,6 +29,9 @@ RaceCar::RaceCar(glm::vec3 position) : GameObject("RaceCar", position), _speed(0
 
     for (unsigned int i = 0; i < _tires.size(); ++i)
         add(_tires[i]);
+
+    soundBuffer.loadFromFile("sounds/horn.wav");
+    sound.setBuffer(soundBuffer);
 }
 
 void RaceCar::accelerate(float step)
@@ -50,14 +53,11 @@ void RaceCar::decelerate(float step)
         _speed = _speed + _deceleration;
     }
     translate(glm::vec3(0.0f, 0.0f, step * _speed));
-
-    //TODO: wheel don't turn like the are supposed to, consider using a standalone method based on _speed.
-    for (unsigned int i = 0; i < _tires.size(); ++i)
-        _tires[i]->rotate(step*_speed,glm::vec3(0,0,1.0));
 }
 
 void RaceCar::brake(float step)
 {
+    correctSpeed();
     if (_speed > 0) {
         _speed = _speed -_fast_deceleration;
     } else if (_speed < 0) {
@@ -76,10 +76,11 @@ void RaceCar::reverseAccelerate(float step)
 
 void RaceCar::steer(float step, int direction)
 {
+    std::cout << "speeld = " << _speed << std::endl;
     //TODO: Limit rotation of wheels
     if (direction == LEFT) {
-        _tires[0]->rotate(step*50,glm::vec3(0,1.0,0));
-        _tires[1]->rotate(step*50,glm::vec3(0,1.0,0));
+        //_tires[0]->rotate(step*50,glm::vec3(0,1.0,0));
+        //_tires[1]->rotate(step*50,glm::vec3(0,1.0,0));
         if (_speed > 0) {
             rotate(step*50,glm::vec3(0,1.0,0));
         }
@@ -87,14 +88,42 @@ void RaceCar::steer(float step, int direction)
             rotate(-step*50,glm::vec3(0,1.0,0));
         }
     } else if (direction ==  RIGHT) {
-        _tires[0]->rotate(-step*50,glm::vec3(0,1.0,0));
-        _tires[1]->rotate(-step*50,glm::vec3(0,1.0,0));
+        //_tires[0]->rotate(-step*50,glm::vec3(0,1.0,0));
+        //_tires[1]->rotate(-step*50,glm::vec3(0,1.0,0));
         if (_speed > 0) {
             rotate(-step*50,glm::vec3(0,1.0,0));
         }
         if (_speed < 0) {
             rotate(step*50,glm::vec3(0,1.0,0));
         }
+    }
+}
+
+void RaceCar::rotateWheels(float step)
+{
+//    if (_speed > 0) {
+//
+//    } else if (_speed < 0) {
+//
+//    }
+
+    if (_speed != 0) {
+        for (unsigned int i = 0; i < _tires.size(); ++i)
+            _tires[i]->rotate(250*step*_speed,glm::vec3(1.0,0,0));
+    }
+}
+
+void RaceCar::correctSpeed()
+{
+    if ((_speed < _acceleration && _speed > 0) || (_speed > _acceleration && _speed < 0)) {
+        _speed = 0;
+    }
+}
+
+void RaceCar::playHorn()
+{
+    if (sound.getStatus() == sf::Sound::Stopped) {
+        sound.play();
     }
 }
 

@@ -26,4 +26,10 @@ void RaceCarBehaviour::update(float step)
     } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 
     }
+
+    _raceCar->rotateWheels(step);
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
+        _raceCar->playHorn();
+    }
 }

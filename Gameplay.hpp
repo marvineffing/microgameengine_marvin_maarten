@@ -8,7 +8,6 @@
 #include "Texture.hpp"
 #include "RaceCar.hpp"
 
-#include "Behaviours/WASDBehaviour.hpp"
 #include "Behaviours/CameraBehaviour.hpp"
 #include "Behaviours/RaceCarBehaviour.hpp"
 

@@ -16,11 +16,13 @@ class RaceCar : public GameObject
         static const float _handeling = 5.0f;
 
         float _speed;
+        float _steering_angle;
+        float _wheel_rotatingAngle;
 
         std::vector<Tire*> _tires;
 
-        sf::SoundBuffer soundBuffer;
-        sf::Sound sound;
+        sf::SoundBuffer _soundBuffer;
+        sf::Sound _sound;
 
         void correctSpeed();
 
@@ -37,6 +39,7 @@ class RaceCar : public GameObject
         void steer(float step, int direction);
 
         void steerWheels(float step, int direction);
+        void resetSteerWheels();
         void rotateWheels(float step);
 
         void playHorn();

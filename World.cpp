@@ -8,6 +8,7 @@ World::World( std::string aName )
 :	GameObject( aName )
 {
 	//ctor
+	soundBuffer.loadFromFile("sounds/crash.wav");
 }
 
 World::~World()
@@ -34,7 +35,10 @@ bool World::checkCollisions()
 		if ( ((GameObject * )*collider)->hasCollider() ) {
 			for ( std::vector< GameObject * >::iterator collidee = collider+1; collidee != children.end(); ++collidee ) {
 				if ( ((GameObject * )*collidee)->hasCollider() ) {
+
 					result = result || ((GameObject * )*collider)->collides( (GameObject *)*collidee );
+					//laat racecar stoppen
+
 				}
 			}
 		}

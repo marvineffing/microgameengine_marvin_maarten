@@ -48,8 +48,14 @@
 		<Unit filename="Behaviour.hpp" />
 		<Unit filename="Behaviours/CameraBehaviour.cpp" />
 		<Unit filename="Behaviours/CameraBehaviour.hpp" />
+		<Unit filename="Behaviours/CollisionBehaviour.cpp" />
+		<Unit filename="Behaviours/CollisionBehaviour.hpp" />
 		<Unit filename="Behaviours/RaceCarBehaviour.cpp" />
 		<Unit filename="Behaviours/RaceCarBehaviour.hpp" />
+		<Unit filename="Behaviours/SoundBehaviour.cc" />
+		<Unit filename="Behaviours/SoundBehaviour.h" />
+		<Unit filename="Behaviours/WASDBehaviour.cpp" />
+		<Unit filename="Behaviours/WASDBehaviour.hpp" />
 		<Unit filename="Camera.cpp" />
 		<Unit filename="Camera.hpp" />
 		<Unit filename="Collider.cpp" />

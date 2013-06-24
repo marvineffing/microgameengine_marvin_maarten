@@ -42,6 +42,10 @@ void RaceCar::accelerate(float step)
     translate(glm::vec3(0.0f, 0.0f, step * _speed));
 }
 
+void RaceCar::stop() {
+    _speed = 0;
+}
+
 void RaceCar::decelerate(float step)
 {
     if ((_speed < _acceleration && _speed > 0) || (_speed > _acceleration && _speed < 0)) {

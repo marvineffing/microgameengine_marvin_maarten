@@ -36,10 +36,8 @@ void Hud::draw()
 	text.setPosition( 10,10);
 
 
-
 	// Draw it
 	//std::cout << "Drawing text" << std::endl;
 	assert ( window != NULL );
-	window->draw( marvin );
 	window->draw(text);
 }

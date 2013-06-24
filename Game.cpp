@@ -47,6 +47,7 @@ void Game::build()
     gameplay->createCar();
 	gameplay->createCamera();
     gameplay->createTrack(glm::vec3(0.0,0.0,0.0));
+    gameplay->createObstacle(glm::vec3(0.0, 0.0, 9.0));
 }
 
 void Game::run()
@@ -108,6 +109,7 @@ void Game::draw()
 	renderer->draw( world );
 	window->pushGLStates();
 	hud->draw();
+	gameplay->draw();
 	window->popGLStates();
 	window->display();
 }
@@ -115,6 +117,12 @@ void Game::draw()
 
 bool Game::checkCollisions()
 {
+    bool retVal;
     World * world = gameplay->getWorld();
-	return world->checkCollisions();
+    retVal = world->checkCollisions();
+    if (retVal) {
+        gameplay->crashCar();
+    }
+
+	return retVal;
 }

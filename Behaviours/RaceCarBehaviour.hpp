@@ -8,6 +8,7 @@ class RaceCarBehaviour : public Behaviour
     private:
         RaceCar * _raceCar;
 
+
     public:
         RaceCarBehaviour(RaceCar* raceCar);
 

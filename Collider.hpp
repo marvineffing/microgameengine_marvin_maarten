@@ -1,9 +1,14 @@
 #pragma once
 
+#include <SFML/Audio.hpp>
+
 class GameObject;
 class SphereCollider;
 class Collider
 {
+private:
+    sf::Sound sound;
+    sf::SoundBuffer soundBuffer;
 	protected:
 		GameObject * parent;
 		float radius;
@@ -13,5 +18,6 @@ class Collider
 		virtual ~Collider();
 
 		virtual bool collides( Collider * otherCollider );
+		virtual bool collidesWithFinishLine( Collider * otherCollider);
 
 };

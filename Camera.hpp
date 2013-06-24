@@ -11,7 +11,7 @@ class Camera : public GameObject
 		glm::mat4 projection;
 
 	public:
-		Camera( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 0.0f, 3.0f, 5.0f ) );
+		Camera( std::string aName, glm::vec3 aPosition);
 		virtual ~Camera();
 
 		void draw( Renderer * renderer, glm::mat4 parentTransform = glm::mat4(1) );

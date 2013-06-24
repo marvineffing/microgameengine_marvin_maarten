@@ -6,10 +6,8 @@
 
 class CameraBehaviour : public Behaviour
 {
-    private:
-        GameObject * car;
     public:
-        CameraBehaviour(GameObject * aParent, GameObject * aCar);
+        CameraBehaviour(GameObject * aParent);
         void update(float step);
         void onCollision(GameObject * otherGameObject);
 };

@@ -26,7 +26,7 @@ Game::Game()
 	renderer = new Renderer( window );
 
 	//load music file
-    music.openFromFile("sounds/hellmarch.wav");
+    //music.openFromFile("sounds/hellmarch.wav");
 }
 
 Game::~Game()
@@ -52,7 +52,7 @@ void Game::build()
 void Game::run()
 {
     //todo: loop music door getstatus
-    playMusic();
+    //playMusic();
 	running = true;
 	while ( running ) {
 		Time::update();

@@ -8,9 +8,9 @@ Gameplay::Gameplay(sf::RenderWindow* window) : window(window)
 
 void Gameplay::createCamera()
 {
-    camera = new Camera( "Camera");
-    camera->setBehaviour(new CameraBehaviour(camera, raceCar));
-    world->add(camera);
+    camera = new Camera("Camera", glm::vec3( 0.0f, 3.0f, -5.0f ) );
+    camera->setBehaviour(new CameraBehaviour(camera));
+    raceCar->add(camera);
 }
 
 void Gameplay::createWorld()
@@ -20,19 +20,18 @@ void Gameplay::createWorld()
 
 void Gameplay::createLight(glm::vec3 position)
 {
-    light = new Light( "Light", position );
+    light = new Light("Light", position);
     world->add(light);
 }
 
 void Gameplay::createCar()
 {
     raceCar = new RaceCar(glm::vec3(0,0,0));
-    //raceCar->setBehaviour( new WASDBehaviour( raceCar, window ) );
     raceCar->setBehaviour(new RaceCarBehaviour(raceCar));
     raceCar->setMesh( Mesh::load( "models/car.obj") );
     raceCar->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
     raceCar->setCollider( new Collider( raceCar ) );
-    //raceCar->rotate(180, glm::vec3(0,1.0,0));
+    //raceCar->rotate(10, glm::vec3(0,1.0,0));
 
     world->add(raceCar);
 }

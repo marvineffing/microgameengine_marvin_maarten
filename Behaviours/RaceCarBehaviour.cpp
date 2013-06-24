@@ -7,14 +7,6 @@ RaceCarBehaviour::RaceCarBehaviour(RaceCar* raceCar) : Behaviour(raceCar), _race
 
 void RaceCarBehaviour::update(float step)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        _raceCar->accelerate(step);
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        _raceCar->reverseAccelerate(step);
-    } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        _raceCar->decelerate(step);
-    }
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         _raceCar->brake(step);
     }
@@ -25,6 +17,14 @@ void RaceCarBehaviour::update(float step)
         _raceCar->steer(step, _raceCar->RIGHT);
     } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        _raceCar->accelerate(step);
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        _raceCar->reverseAccelerate(step);
+    } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+        _raceCar->decelerate(step);
     }
 
     _raceCar->rotateWheels(step);

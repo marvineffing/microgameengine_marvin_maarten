@@ -36,6 +36,7 @@ class RaceCar : public GameObject
         void reverseAccelerate(float step);
         void steer(float step, int direction);
 
+        void steerWheels(float step, int direction);
         void rotateWheels(float step);
 
         void playHorn();

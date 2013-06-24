@@ -76,11 +76,9 @@ void RaceCar::reverseAccelerate(float step)
 
 void RaceCar::steer(float step, int direction)
 {
-    std::cout << "speeld = " << _speed << std::endl;
     //TODO: Limit rotation of wheels
     if (direction == LEFT) {
-        //_tires[0]->rotate(step*50,glm::vec3(0,1.0,0));
-        //_tires[1]->rotate(step*50,glm::vec3(0,1.0,0));
+        steerWheels(step, direction);
         if (_speed > 0) {
             rotate(step*50,glm::vec3(0,1.0,0));
         }
@@ -88,8 +86,7 @@ void RaceCar::steer(float step, int direction)
             rotate(-step*50,glm::vec3(0,1.0,0));
         }
     } else if (direction ==  RIGHT) {
-        //_tires[0]->rotate(-step*50,glm::vec3(0,1.0,0));
-        //_tires[1]->rotate(-step*50,glm::vec3(0,1.0,0));
+        steerWheels(step, direction);
         if (_speed > 0) {
             rotate(-step*50,glm::vec3(0,1.0,0));
         }
@@ -99,14 +96,21 @@ void RaceCar::steer(float step, int direction)
     }
 }
 
+void RaceCar::steerWheels(float step, int direction)
+{
+//    glm::vec3 rotationAxes = glm::vec3(0,1.0,0);
+//    if (direction == LEFT) {
+//        _tires[0]->rotate(step*50, rotationAxes);
+//        _tires[1]->rotate(step*50, rotationAxes);
+//
+//    } else if (direction == RIGHT) {
+//        _tires[0]->rotate(step*-50,rotationAxes);
+//        _tires[1]->rotate(step*-50,rotationAxes);
+//    }
+}
+
 void RaceCar::rotateWheels(float step)
 {
-//    if (_speed > 0) {
-//
-//    } else if (_speed < 0) {
-//
-//    }
-
     if (_speed != 0) {
         for (unsigned int i = 0; i < _tires.size(); ++i)
             _tires[i]->rotate(250*step*_speed,glm::vec3(1.0,0,0));

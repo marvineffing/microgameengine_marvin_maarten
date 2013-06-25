@@ -29,6 +29,7 @@ class GameObject
 
 		void translate( glm::vec3 translation );
 		void rotate( float angle, glm::vec3 axis );
+		void scale(glm::vec3 detail);
 
 		const std::string getName();
 		glm::vec3 getLocation();

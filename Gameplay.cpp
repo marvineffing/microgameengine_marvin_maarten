@@ -48,6 +48,7 @@ void Gameplay::createTrack(glm::vec3 position)
     _track->setMesh( Mesh::load( "models/floor.obj" ) );
     _track->setColorMap( Texture::load( "models/track.jpg" ) );
     _world->add(_track);
+    _track->scale(glm::vec3(2.0,1.0,2.0));
 }
 
 void Gameplay::createSkybox()

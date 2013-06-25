@@ -27,6 +27,11 @@ void GameObject::rotate( float angle, glm::vec3 axis )
 	transform = glm::rotate( transform, angle, axis);
 }
 
+void GameObject::scale(glm::vec3 detail)
+{
+    transform = glm::scale(transform, detail);
+}
+
 const std::string GameObject::getName()
 {
 	return name;

@@ -39,7 +39,7 @@ void Gameplay::createObstacle(glm::vec3 position) {
     monkey->setMesh(Mesh::load("models/suzanna.obj"));
     monkey->setColorMap(Texture::load("models/monkey.jpg"));
     monkey->setCollider(new Collider(monkey));
-    world->add(monkey);
+    _world->add(monkey);
 }
 
 void Gameplay::createTrack(glm::vec3 position)
@@ -66,12 +66,12 @@ void Gameplay::updateCamera() {
 }
 
 void Gameplay::stopCar() {
-    raceCar->setSpeed(0);
+    _raceCar->setSpeed(0);
 }
 
 void Gameplay::crashCar() {
     stopCar();
-    raceCar->setSpeed(-1);
+    _raceCar->setSpeed(-1);
 }
 
 int Gameplay::getLaps() {
@@ -98,7 +98,7 @@ void Gameplay::draw() {
 
 	// Draw it
 	//std::cout << "Drawing text" << std::endl;
-	assert ( window != NULL );
-	window->draw(text);
+	assert ( _window != NULL );
+	_window->draw(text);
 
 }

@@ -74,7 +74,7 @@ void RaceCar::reverseAccelerate(float step)
     translate(glm::vec3(0.0f, 0.0f, step * _speed ) );
 }
 
-void RaceCar::steer(float step, int direction)
+void RaceCar::steerCar(float step, int direction)
 {
     //TODO: Limit rotation of wheels
     glm::vec3 rotationAxes = glm::vec3(0,1.0,0);
@@ -83,12 +83,12 @@ void RaceCar::steer(float step, int direction)
             rotate(step*50,rotationAxes);
         }
         if (_speed < 0) {
-            rotate(-step*50,rotationAxes);
+            rotate(step*-50,rotationAxes);
         }
         steerWheels(step, direction);
     } else if (direction ==  RIGHT) {
         if (_speed > 0) {
-            rotate(-step*50,rotationAxes);
+            rotate(step*-50,rotationAxes);
         }
         if (_speed < 0) {
             rotate(step*50,rotationAxes);

@@ -9,7 +9,6 @@ Gameplay::Gameplay(sf::RenderWindow* window) : _window(window)
 void Gameplay::createCamera()
 {
     _camera = new Camera("Camera", glm::vec3( -1.0f, 0.9f, -2.0f ) );
-    _camera->setBehaviour(new CameraBehaviour(_camera));
     _raceCar->add(_camera);
 }
 

@@ -1,6 +1,8 @@
 #include "RaceCar.hpp"
 
-RaceCar::RaceCar(glm::vec3 position) : GameObject("RaceCar", position), _speed(0)
+RaceCar::RaceCar(std::string name, glm::vec3 position)
+    : GameObject("RaceCar", position), _speed(0), _current_wheel_rotation_x(0), _wheel_rotation_y(0)
+
 {
     Mesh * tireMesh = Mesh::load("models/cartire.obj");
 
@@ -80,18 +82,18 @@ void RaceCar::steerCar(float step, int direction)
     glm::vec3 rotationAxes = glm::vec3(0,1.0,0);
     if (direction == LEFT) {
         if (_speed > 0) {
-            rotate(step*50,rotationAxes);
+            rotate(step*_steering,rotationAxes);
         }
         if (_speed < 0) {
-            rotate(step*-50,rotationAxes);
+            rotate(step*(0-_steering),rotationAxes);
         }
         steerWheels(step, direction);
     } else if (direction ==  RIGHT) {
         if (_speed > 0) {
-            rotate(step*-50,rotationAxes);
+            rotate(step*(0-_steering),rotationAxes);
         }
         if (_speed < 0) {
-            rotate(step*50,rotationAxes);
+            rotate(step*_steering,rotationAxes);
         }
         steerWheels(step, direction);
     }
@@ -110,16 +112,27 @@ void RaceCar::steerWheels(float step, int direction)
     }
 }
 
-void RaceCar::resetSteerWheels()
+void RaceCar::resetSteerWheels(float step)
 {
-
+// _tires[0]->rotate(step * 50, glm::vec3(0,1,0));
+// _tires[1]->rotate(step * 50, glm::vec3(0,1,0));
 }
 
 void RaceCar::rotateWheels(float step)
 {
     if (_speed != 0) {
-        for (unsigned int i = 0; i < _tires.size(); ++i)
-            _tires[i]->rotate(150*step*_speed,glm::vec3(1.0,0,0));
+        for (unsigned int i = 0; i < _tires.size(); ++i) {
+            float angle = 150 * step * _speed;
+            _current_wheel_rotation_x += angle;
+            if (_current_wheel_rotation_x > 360)
+                _current_wheel_rotation_x -= 360;
+            if (_current_wheel_rotation_x < 0)
+                _current_wheel_rotation_x += 360;
+
+            std::cout << "rotate wheel = " << angle << std::endl;
+            std::cout << "current angle= " << _current_wheel_rotation_x << std::endl;
+            _tires[i]->rotate(angle,glm::vec3(1.0,0,0));
+        }
     }
 }
 
@@ -132,9 +145,9 @@ void RaceCar::correctSpeed()
 
 void RaceCar::playHorn()
 {
-    if (_sound.getStatus() == sf::Sound::Stopped) {
-        _sound.play();
-    }
+//    if (_sound.getStatus() == sf::Sound::Stopped) {
+//        _sound.play();
+//    }
 }
 
 int RaceCar::getSpeed()

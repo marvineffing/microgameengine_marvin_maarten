@@ -18,7 +18,7 @@ void RaceCarBehaviour::update(float step)
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         _raceCar->steerCar(step, _raceCar->RIGHT);
     } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        _raceCar->resetSteerWheels();
+        _raceCar->resetSteerWheels(step);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {

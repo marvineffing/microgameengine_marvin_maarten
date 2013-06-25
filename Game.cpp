@@ -17,13 +17,13 @@
 #include "Skybox.hpp"
 
 Game::Game()
-:	window(NULL), hud(NULL), renderer(NULL)
+:	_window(NULL), _hud(NULL), _renderer(NULL)
 {
-	window = new sf::RenderWindow( sf::VideoMode( 800, 600 ), "Race Game Marvin en Maarten" ); // get a window
+	_window = new sf::RenderWindow( sf::VideoMode( 800, 600 ), "Race Game Marvin en Maarten" ); // get a window
 	std::cout << "Init Glew" << glewInit() << std::endl;
-	hud = new Hud( window );
+	_hud = new Hud( _window );
 	//window->setVerticalSyncEnabled( true ); // sync with monitor ->60 hz approx
-	renderer = new Renderer( window );
+	_renderer = new Renderer( _window );
 
 	//load music file
     //music.openFromFile("sounds/hellmarch.wav");
@@ -36,42 +36,41 @@ Game::~Game()
 
 void Game::build()
 {
-	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
+	_renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
 
+    _gameplay = new Gameplay(_window);
+	_gameplay->createWorld();
+	_gameplay->createSkybox();
+	_gameplay->createLight(glm::vec3( 2.0f, 10.0f, 5.0f ));
 
-    gameplay = new Gameplay(window);
-	gameplay->createWorld();
-	gameplay->createSkybox();
-	gameplay->createLight(glm::vec3( 2.0f, 10.0f, 15.0f ));
-
-    gameplay->createCar();
-	gameplay->createCamera();
-    gameplay->createTrack(glm::vec3(0.0,0.0,0.0));
+    _gameplay->createCar();
+	_gameplay->createCamera();
+    _gameplay->createTrack(glm::vec3(0.0,0.0,0.0));
 }
 
 void Game::run()
 {
     //todo: loop music door getstatus
     //playMusic();
-	running = true;
-	while ( running ) {
+	_running = true;
+	while ( _running ) {
 		Time::update();
 		FPS::update();
 		control();
-		if ( running ) { // control may have changed running;
+		if ( _running ) { // control may have changed running;
 			update( Time::step() );
 			draw();
 		}
 	}
 }
 
-void Game::playMusic() {
-    music.play();
-}
+//void Game::playMusic() {
+//    _music.play();
+//}
 
-void Game::pauseMusic() {
-    music.pause();
-}
+//void Game::pauseMusic() {
+//    _music.pause();
+//}
 
 void Game::stop()
 {
@@ -82,39 +81,44 @@ void Game::stop()
 void Game::control()
 {
 	sf::Event event;
-	while( window->pollEvent( event ) ) {
+	while( _window->pollEvent( event ) ) {
 		if ( event.type == sf::Event::Closed ) {
-			window->close();
-			running = false; // running = false;
+			_window->close();
+			_running = false; // running = false;
 		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+        _window->close();
+        _running = false;
 	}
 }
 
-void Game::update( float step )
+void Game::update(float step)
 {
-    World * world = gameplay->getWorld();
+    World * world = _gameplay->getWorld();
 	assert( world != NULL );
-	world->update( step );
+	world->update( step);
 	checkCollisions();
 }
 
 void Game::draw()
 {
-    World * world = gameplay->getWorld();
-	assert( window != NULL );
-	assert( renderer != NULL );
+    World * world = _gameplay->getWorld();
+	assert( _window != NULL );
+	assert( _renderer != NULL );
 	assert( world != NULL );
 
-	renderer->draw( world );
-	window->pushGLStates();
-	hud->draw();
-	window->popGLStates();
-	window->display();
+	_renderer->draw( world );
+	_window->pushGLStates();
+	_hud->draw();
+	_window->popGLStates();
+	_window->display();
+    _gameplay->updateCamera();
 }
 
 
 bool Game::checkCollisions()
 {
-    World * world = gameplay->getWorld();
+    World * world = _gameplay->getWorld();
 	return world->checkCollisions();
 }

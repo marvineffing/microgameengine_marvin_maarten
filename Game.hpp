@@ -14,13 +14,13 @@
 class Game
 {
 	private: // data members
-		sf::RenderWindow * window;
-		Hud * hud;
-		Renderer * renderer;
-		Gameplay * gameplay;
+		sf::RenderWindow * _window;
+		Hud * _hud;
+		Renderer * _renderer;
+		Gameplay * _gameplay;
 
-		bool running;
-		sf::Music music;
+		bool _running;
+		sf::Music _music;
 
 	public: // functions
 		Game();
@@ -30,12 +30,12 @@ class Game
 		void run();
 		void stop();
 
-		void playMusic();
-		void pauseMusic();
+//		void playMusic();
+//		void pauseMusic();
 
 	private:
 		void control();
-		void update( float step );
+		void update(float step);
 		void draw();
 		bool checkCollisions();
 

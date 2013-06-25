@@ -7,8 +7,8 @@
 #include "Mesh.hpp"
 #include "Texture.hpp"
 #include "RaceCar.hpp"
+#include "Skybox.hpp"
 
-#include "Behaviours/CameraBehaviour.hpp"
 #include "Behaviours/RaceCarBehaviour.hpp"
 
 #include <SFML/Graphics.hpp>
@@ -16,12 +16,14 @@
 
 class Gameplay {
     private:
-        sf::RenderWindow * window;
-        World * world;
-        Camera * camera;
-        Light * light;
-        RaceCar * raceCar;
-        GameObject * track;
+        sf::RenderWindow * _window;
+        World * _world;
+        Camera * _camera;
+        Light * _light;
+        RaceCar * _raceCar;
+        GameObject * _track;
+        GameObject * _tree;
+        Skybox * _skybox;
         GameObject * monkey;
         int laps;
 
@@ -35,6 +37,7 @@ class Gameplay {
         void createTrack(glm::vec3 position);
         void createSkybox();
         void createObstacle(glm::vec3 position);
+        void updateCamera();
 
         //collision
         void stopCar();

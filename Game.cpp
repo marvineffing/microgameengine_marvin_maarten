@@ -43,9 +43,11 @@ void Game::build()
 	_gameplay->createSkybox();
 	_gameplay->createLight(glm::vec3( 2.0f, 10.0f, 5.0f ));
 
+
     _gameplay->createCar();
 	_gameplay->createCamera();
     _gameplay->createTrack(glm::vec3(0.0,0.0,0.0));
+    _gameplay->createObstacle(glm::vec3(0.0, 0.0, 9.0));
 }
 
 void Game::run()
@@ -119,6 +121,11 @@ void Game::draw()
 
 bool Game::checkCollisions()
 {
+    bool retVal;
     World * world = _gameplay->getWorld();
-	return world->checkCollisions();
+    retVal = world->checkCollisions();
+    if (retVal) {
+        _gameplay->crashCar();
+    }
+	return retVal;
 }

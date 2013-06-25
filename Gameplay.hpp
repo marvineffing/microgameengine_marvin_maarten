@@ -24,6 +24,8 @@ class Gameplay {
         GameObject * _track;
         GameObject * _tree;
         Skybox * _skybox;
+        GameObject * monkey;
+        int laps;
 
     public:
         Gameplay(sf::RenderWindow * window);
@@ -37,5 +39,14 @@ class Gameplay {
         void createObstacle(glm::vec3 position);
         void updateCamera();
 
+        //collision
+        void stopCar();
+        void crashCar();
+
         World * getWorld();
+
+        int getLaps();
+        void incrLaps();
+
+        void draw(); //for laps
 };

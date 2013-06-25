@@ -5,7 +5,7 @@
 Collider::Collider( GameObject * aParent, float aRadius )
 :	parent(aParent), radius( aRadius )
 {
-	//ctor
+	soundBuffer.loadFromFile("sounds/crash.wav");
 }
 
 Collider::~Collider()
@@ -19,10 +19,25 @@ bool Collider::collides( Collider * otherCollider )
 	glm::vec3 location = parent->getLocation();
 	glm::vec3 otherLocation = otherCollider->parent->getLocation();
 	float distance = glm::distance( location, otherLocation );
-	if ( distance < radius + otherCollider->radius ) {
+	if ( distance < radius + otherCollider->radius ) { // in case of colliding
+    //todo: stopping behaviour
+					if (sound.getStatus() == sf::Sound::Stopped) {
+                        sound.setBuffer(soundBuffer);
+                        sound.play();
+                    }
+
 		std::cout << parent->getName() << " Hits " << otherCollider->parent->getName() << std::endl;
 		return true;
 	};
 	return false;
+}
+
+/**
+* Returns wether or not Object collides with finish line so that a lap may be registered.
+* TODO: increase lap # when colliding in Gameplay
+**/
+bool Collider::collidesWithFinishLine(Collider * otherCollider) {
+    bool retVal = false;
+
 }
 

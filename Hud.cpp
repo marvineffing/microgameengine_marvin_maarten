@@ -80,5 +80,29 @@ void Hud::drawSpeed()
 
 void Hud::drawTime()
 {
+    char time[] = "test";
+    char label[] = "fastest lap: ";
 
+    // TODO get time
+    int t = 0;
+
+
+    if (t > 0) {
+        sprintf(time, "%3i", t);
+        sf::Text labelText(label);
+        sf::Text timeText(time);
+        labelText.setCharacterSize(20);
+        timeText.setCharacterSize(20);
+        labelText.setStyle(sf::Text::Bold);
+        timeText.setStyle(sf::Text::Bold);
+        labelText.setColor(sf::Color::White);
+        timeText.setColor(sf::Color::White);
+        labelText.setPosition(625, 10);
+        timeText.setPosition(740, 10);
+
+        if(_window != NULL) {
+            _window->draw(labelText);
+            _window->draw(timeText);
+        }
+    }
 }

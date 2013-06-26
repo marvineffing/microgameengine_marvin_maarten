@@ -57,9 +57,7 @@ void Hud::drawSpeed()
     float carSpeed = _gameplay->getRaceCar()->getSpeed();
 
     int realSpeed = abs((floor(carSpeed*5+0.5)/5)*10);
-    std::cout << "speed = " << realSpeed << std::endl;
 
-    //carSpeed = carSpeed * 10.0;
     sprintf(speed, "%3i", realSpeed);
     sf::Text text1(speed);
     sf::Text text2(speedLabel);

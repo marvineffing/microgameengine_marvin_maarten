@@ -1,7 +1,7 @@
 #include "RaceCar.hpp"
 
 RaceCar::RaceCar(std::string name, glm::vec3 position)
-    : GameObject("RaceCar", position), _speed(0), _current_wheel_rotation_x(0), _wheel_rotation_y(0)
+    : GameObject("RaceCar", position), _speed(0), _xrot_wheel(0), _yrot_wheel(0)
 
 {
     Mesh * tireMesh = Mesh::load("models/cartire.obj");
@@ -105,21 +105,38 @@ void RaceCar::steerCar(float step, int direction)
 
 void RaceCar::steerWheels(float step, int direction)
 {
-    glm::vec3 rotationAxes = glm::vec3(0,1.0,0);
-    if (direction == LEFT) {
-        _tires[0]->rotate(step*50, rotationAxes);
-        _tires[1]->rotate(step*50, rotationAxes);
+   // std::cout << "yrot = " << _yrot_wheel << std::endl;
+    glm::vec3 rotationAxes = glm::vec3(0,cos(_xrot_wheel),sin(_xrot_wheel));
+    if (direction == LEFT && _yrot_wheel <  _yrot_wheel_limit) {
+        float angle = step * _yrot_wheel_step;
+        _yrot_wheel += angle;
+        _tires[0]->rotate(angle, rotationAxes);
+        _tires[1]->rotate(angle, rotationAxes);
 
-    } else if (direction == RIGHT) {
-        _tires[0]->rotate(step*-50,rotationAxes);
-        _tires[1]->rotate(step*-50,rotationAxes);
+    } else if (direction == RIGHT && _yrot_wheel > (0-_yrot_wheel_limit)) {
+        float angle = step * (0-_yrot_wheel_step);
+        _yrot_wheel += angle;
+        _tires[0]->rotate(angle,rotationAxes);
+        _tires[1]->rotate(angle,rotationAxes);
     }
 }
 
 void RaceCar::resetSteerWheels(float step)
 {
-// _tires[0]->rotate(step * 50, glm::vec3(0,1,0));
-// _tires[1]->rotate(step * 50, glm::vec3(0,1,0));
+    glm::vec3 rotationAxes = glm::vec3(0,1,0);
+    if (_yrot_wheel < (_yrot_wheel_step*step) && _yrot_wheel > (0-(_yrot_wheel_step*step)))
+        _yrot_wheel = 0;
+    if (_yrot_wheel > 0) {
+        float angle = step * (0-_yrot_wheel_step);
+        _yrot_wheel += angle;
+        _tires[0]->rotate(angle, rotationAxes);
+        _tires[1]->rotate(angle, rotationAxes);
+    } else if (_yrot_wheel < 0) {
+        float angle = step * _yrot_wheel_step;
+        _yrot_wheel += angle;
+        _tires[0]->rotate(angle, rotationAxes);
+        _tires[1]->rotate(angle, rotationAxes);
+    }
 }
 
 void RaceCar::rotateWheels(float step)
@@ -127,15 +144,17 @@ void RaceCar::rotateWheels(float step)
     if (_speed != 0) {
         for (unsigned int i = 0; i < _tires.size(); ++i) {
             float angle = 150 * step * _speed;
-            _current_wheel_rotation_x += angle;
-            if (_current_wheel_rotation_x > 360)
-                _current_wheel_rotation_x -= 360;
-            if (_current_wheel_rotation_x < 0)
-                _current_wheel_rotation_x += 360;
+            _xrot_wheel += angle;
+            if (_xrot_wheel > 360)
+                _xrot_wheel -= 360;
+            if (_xrot_wheel < 0)
+                _xrot_wheel += 360;
 
-            std::cout << "rotate wheel = " << angle << std::endl;
-            std::cout << "current angle= " << _current_wheel_rotation_x << std::endl;
-            _tires[i]->rotate(angle,glm::vec3(1.0,0,0));
+            if (i == 0 || i == 1) {
+                _tires[i]->rotate(angle,glm::vec3(cos(_yrot_wheel),0,sin(_yrot_wheel)));
+            } else {
+                _tires[i]->rotate(angle,glm::vec3(1,0,0));
+            }
         }
     }
 }
@@ -154,7 +173,7 @@ void RaceCar::playHorn()
 //    }
 }
 
-int RaceCar::getSpeed()
+float RaceCar::getSpeed()
 {
     return _speed;
 }

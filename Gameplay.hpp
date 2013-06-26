@@ -47,6 +47,7 @@ class Gameplay {
 
         int getLaps();
         void incrLaps();
+        RaceCar * getRaceCar();
 
         void draw(); //for laps
 };

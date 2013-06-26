@@ -21,7 +21,8 @@ Game::Game()
 {
 	_window = new sf::RenderWindow( sf::VideoMode( 800, 600 ), "Race Game Marvin en Maarten" ); // get a window
 	std::cout << "Init Glew" << glewInit() << std::endl;
-	_hud = new Hud( _window );
+    _gameplay = new Gameplay(_window);
+	_hud = new Hud(_window, _gameplay);
 	//window->setVerticalSyncEnabled( true ); // sync with monitor ->60 hz approx
 	_renderer = new Renderer( _window );
 
@@ -38,7 +39,6 @@ void Game::build()
 {
 	_renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
 
-    _gameplay = new Gameplay(_window);
 	_gameplay->createWorld();
 	_gameplay->createSkybox();
 	_gameplay->createLight(glm::vec3( 2.0f, 10.0f, 5.0f ));

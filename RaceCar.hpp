@@ -15,11 +15,12 @@ class RaceCar : public GameObject
         static const float _fast_deceleration = 0.02f;
         static const float _steering = 50.0f;
         static const float _steering_limit = 150.0f;
+        static const float _yrot_wheel_step = 50.0f;
+        static const float _yrot_wheel_limit = 45.0f;
 
-        float _current_wheel_rotation_x;
-        float _wheel_rotation_y;
+        float _xrot_wheel;
+        float _yrot_wheel;
         float _speed;
-        float _wheel_rotatingAngle;
 
         std::vector<Tire*> _tires;
 
@@ -46,7 +47,7 @@ class RaceCar : public GameObject
 
         void playHorn();
 
-        int getSpeed();
+        float getSpeed();
         void setSpeed(int speed);
         int getSpeedLimit();
 };

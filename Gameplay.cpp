@@ -103,3 +103,8 @@ void Gameplay::draw() {
 	_window->draw(text);
 
 }
+
+RaceCar * Gameplay::getRaceCar()
+{
+    return _raceCar;
+}

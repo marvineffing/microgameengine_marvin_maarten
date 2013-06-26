@@ -78,6 +78,8 @@
 		<Unit filename="Texture.hpp" />
 		<Unit filename="Time.cpp" />
 		<Unit filename="Time.hpp" />
+		<Unit filename="Timer.cpp" />
+		<Unit filename="Timer.hpp" />
 		<Unit filename="Tire.cpp" />
 		<Unit filename="Tire.hpp" />
 		<Unit filename="World.cpp" />

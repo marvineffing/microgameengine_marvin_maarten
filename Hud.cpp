@@ -45,9 +45,10 @@ void Hud::drawFPS()
 
 	// Draw it
 	//std::cout << "Drawing text" << std::endl;
-	assert ( _window != NULL );
-	_window->draw(text1);
-	_window->draw(text2);
+	if (_window != NULL) {
+        _window->draw(text1);
+        _window->draw(text2);
+	}
 }
 
 void Hud::drawSpeed()
@@ -71,8 +72,10 @@ void Hud::drawSpeed()
 	text2.setPosition(80,50);
 
 	assert ( _window != NULL );
-	_window->draw(text1);
-	_window->draw(text2);
+	if (_window != NULL) {
+        _window->draw(text1);
+        _window->draw(text2);
+	}
 }
 
 void Hud::drawTime()

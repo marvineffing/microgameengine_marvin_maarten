@@ -46,3 +46,25 @@ bool World::checkCollisions()
 	return result; // any collision
 }
 
+bool World::checkFinishCollisions() {
+    bool result = false;
+
+    //voor alle game objecten
+    for (std::vector<GameObject*>::iterator collider = children.begin(); collider!=children.end(); ++collider) {
+
+        if ( ((GameObject*)*collider)->hasCollider() ) { //als gameobject een collider heeft
+
+            for ( std::vector<GameObject*>::iterator finishCollider = children.begin(); finishCollider!=children.end(); ++finishCollider) {
+
+                if ( ((GameObject*)*finishCollider)->hasFinishCollider() ) { //en ander object heeft finishCollider
+                    result = result || ( (GameObject*) *collider )->collidesFinish( (GameObject*)*finishCollider );
+                }
+
+            }
+
+        }
+
+    }
+
+    return result;
+}

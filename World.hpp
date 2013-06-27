@@ -15,6 +15,7 @@ class World : public GameObject
 
 		void update( float step );
 		bool checkCollisions();
+		bool checkFinishCollisions();
 
 		virtual void draw( Renderer * renderer );
 

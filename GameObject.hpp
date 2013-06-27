@@ -5,16 +5,19 @@
 #include "glm.hpp"
 
 #include "Collider.hpp"
+#include "FinishCollider.h"
 #include "Renderer.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
 #include "Behaviour.hpp"
+#include "FinishCollider.h"
 
 class GameObject
 {
 	protected:
 		std::string name;
 		Collider * collider;
+
 		Behaviour * behaviour;
 
 		Mesh * mesh;
@@ -24,6 +27,8 @@ class GameObject
 		std::vector< GameObject * > children;
 
 	public:
+	    FinishCollider * finishCollider;
+
 		GameObject( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 0.0f, 0.0f, 0.0f ) );
 		virtual ~GameObject();
 
@@ -34,19 +39,24 @@ class GameObject
 		const std::string getName();
 		glm::vec3 getLocation();
 		bool hasCollider();
+		bool hasFinishCollider();
 
 		glm::mat4 transform;
 
 		void setBehaviour( Behaviour * aBehaviour );
 		void setCollider( Collider * aCollider );
+		void setFinishCollider(FinishCollider * aCollider);
 		void setMesh( Mesh * aMesh );
 		void setColorMap( Texture * aColorMap );
 
 		virtual void update( float step );
 		virtual bool collides( GameObject * otherGameObject );
+		virtual bool collidesFinish(GameObject * otherGameObject);
 		virtual void onCollision(  GameObject * otherGameObject );
+		virtual void onCollisionFinish( GameObject * otherGameObject);
 		virtual void draw( Renderer * renderer, glm::mat4 parentTransform = glm::mat4(1) );
 
+        FinishCollider* getFinishCollider();
 
 		void add( GameObject * child );
 

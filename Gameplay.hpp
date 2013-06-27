@@ -25,6 +25,7 @@ class Gameplay {
         GameObject * _tree;
         Skybox * _skybox;
         GameObject * monkey;
+        GameObject * finish;
         int laps;
 
     public:
@@ -37,6 +38,7 @@ class Gameplay {
         void createTrack(glm::vec3 position);
         void createSkybox();
         void createObstacle(glm::vec3 position);
+        void createFinish();
         void updateCamera();
 
         //collision

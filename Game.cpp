@@ -43,11 +43,11 @@ void Game::build()
 	_gameplay->createSkybox();
 	_gameplay->createLight(glm::vec3( 2.0f, 10.0f, 5.0f ));
 
-
     _gameplay->createCar();
 	_gameplay->createCamera();
     _gameplay->createTrack(glm::vec3(0.0,0.0,0.0));
     _gameplay->createObstacle(glm::vec3(0.0, 0.0, 9.0));
+    //gameplay->createFinish();
 }
 
 void Game::run()
@@ -101,6 +101,7 @@ void Game::update(float step)
 	assert( world != NULL );
 	world->update( step);
 	checkCollisions();
+	//checkFinish();
 }
 
 void Game::draw()
@@ -122,10 +123,19 @@ void Game::draw()
 bool Game::checkCollisions()
 {
     bool retVal;
-    World * world = _gameplay->getWorld();
-    retVal = world->checkCollisions();
+    World * _world = _gameplay->getWorld();
+    retVal = _world->checkCollisions();
     if (retVal) {
         _gameplay->crashCar();
     }
 	return retVal;
+}
+
+bool Game::checkFinish() {
+    bool retVal;
+    World * _world = _gameplay->getWorld();
+    retVal = _world->checkFinishCollisions();
+    if (retVal) {
+        //do something with laps
+    }
 }

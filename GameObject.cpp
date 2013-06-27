@@ -47,6 +47,10 @@ bool GameObject::hasCollider()
 	return collider != NULL;
 }
 
+bool GameObject::hasFinishCollider() {
+    return finishCollider != NULL;
+}
+
 void GameObject::setBehaviour( Behaviour * aBehaviour )
 {
 	assert( aBehaviour != NULL );
@@ -59,6 +63,10 @@ void GameObject::setCollider( Collider * aCollider )
 	collider = aCollider;
 }
 
+void GameObject::setFinishCollider( FinishCollider * aCollider ) {
+    assert( aCollider != NULL );
+    finishCollider = aCollider;
+}
 
 void GameObject::setMesh( Mesh * aMesh )
 {
@@ -93,11 +101,24 @@ bool GameObject::collides( GameObject * otherGameObject )
 	return collider->collides( otherGameObject->collider );
 }
 
+bool GameObject::collidesFinish(GameObject * otherGameObject) {
+    assert ( collider != NULL);
+    assert ( otherGameObject != NULL);
+    assert ( otherGameObject->finishCollider != NULL);
+    return collider->collidesWithFinish(otherGameObject->finishCollider);
+}
+
 void GameObject::onCollision(  GameObject * otherGameObject )
 {
 	if ( behaviour ) {
 		behaviour->onCollision( otherGameObject );
 	}
+}
+
+void GameObject::onCollisionFinish( GameObject * otherGameObject) {
+    if ( behaviour) {
+        behaviour->onCollision(otherGameObject);
+    }
 }
 
 void GameObject::draw( Renderer * aRenderer, glm::mat4 parentTransform )
@@ -122,6 +143,10 @@ void GameObject::add( GameObject * child )
 {
 	assert( child != NULL );
 	children.push_back( child );
+}
+
+FinishCollider* GameObject::getFinishCollider() {
+    return finishCollider;
 }
 
 // private functions

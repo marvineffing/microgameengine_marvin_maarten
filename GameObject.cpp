@@ -8,8 +8,8 @@
 #include "Mesh.hpp"
 #include "Texture.hpp"
 
-GameObject::GameObject( std::string aName, glm::vec3 aPosition )
-:	name( aName ), transform( glm::translate( aPosition ) ), collider( NULL ), behaviour( NULL ), mesh( NULL ), colorMap( NULL )
+GameObject::GameObject( std::string aName, glm::vec3 aPosition, ShaderProgram* shaderProgram)
+:	name( aName ), transform( glm::translate( aPosition ) ), _shaderProgram(shaderProgram), collider( NULL ), behaviour( NULL ), mesh( NULL ), colorMap( NULL )
 {
 }
 
@@ -132,7 +132,8 @@ void GameObject::draw( Renderer * aRenderer, glm::mat4 parentTransform )
 {
 	assert( aRenderer != NULL );
 
-	//std::cout << name << "  ";
+    aRenderer->use(_shaderProgram);
+
 	if ( mesh ) { // if there is something to draw
 		aRenderer->setModel( parentTransform * transform ); // combine parents transfor with own
 		if ( colorMap ) { //is has a colormap
@@ -150,6 +151,11 @@ void GameObject::add( GameObject * child )
 {
 	assert( child != NULL );
 	children.push_back( child );
+}
+
+ShaderProgram* GameObject::getShaderProgram()
+{
+    return _shaderProgram;
 }
 
 FinishCollider* GameObject::getFinishCollider() {

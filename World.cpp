@@ -3,9 +3,10 @@
 #include "World.hpp"
 #include "Camera.hpp"
 #include "Light.hpp"
+#include "ShaderProgram.hpp"
 
-World::World( std::string aName )
-:	GameObject( aName )
+World::World( std::string aName, ShaderProgram* shaderProgram )
+:	GameObject( aName, glm::vec3(0,0,0), shaderProgram )
 {
 	//ctor
 	soundBuffer.loadFromFile("sounds/crash.wav");

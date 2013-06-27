@@ -6,7 +6,7 @@
 class Skybox : public GameObject
 {
     public:
-        Skybox( std::string aName = NULL, glm::vec3 aPosition = glm::vec3(0.0f ,0.0f, 0.0f) );
+        Skybox( std::string aName = NULL, glm::vec3 aPosition = glm::vec3(0.0f ,0.0f, 0.0f), ShaderProgram* shaderProgram = NULL);
         virtual ~Skybox();
     protected:
     private:

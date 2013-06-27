@@ -4,6 +4,7 @@
 
 #include "GameObject.hpp"
 #include "Tire.hpp"
+#include "ShaderProgram.hpp"
 
 class RaceCar : public GameObject
 {
@@ -21,8 +22,8 @@ class RaceCar : public GameObject
         float _xrot_wheel;
         float _yrot_wheel;
         float _speed;
-
         std::vector<Tire*> _tires;
+        ShaderProgram * _shaderProgram;
 
         sf::SoundBuffer _soundBuffer;
         sf::Sound _sound;
@@ -33,7 +34,7 @@ class RaceCar : public GameObject
         static const int LEFT = 0;
         static const int RIGHT = 1;
 
-        RaceCar(std::string name, glm::vec3 position);
+        RaceCar(std::string name, glm::vec3 position, ShaderProgram* shaderProgram);
 
         void accelerate(float step);
         void decelerate(float step);

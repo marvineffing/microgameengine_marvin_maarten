@@ -1,29 +1,29 @@
 #include "RaceCar.hpp"
 
-RaceCar::RaceCar(std::string name, glm::vec3 position)
-    : GameObject("RaceCar", position), _speed(0), _xrot_wheel(0), _yrot_wheel(0)
+RaceCar::RaceCar(std::string name, glm::vec3 position, ShaderProgram* shaderProgram)
+    : GameObject("RaceCar", position, shaderProgram), _shaderProgram(shaderProgram), _speed(0), _xrot_wheel(0), _yrot_wheel(0)
 
 {
     Mesh * tireMesh = Mesh::load("models/cartire.obj");
 
     // Tires
-    Tire* frontLeft = new Tire("FrontLeftTire", glm::vec3(-0.15, 0.10, 0.32));
+    Tire* frontLeft = new Tire("FrontLeftTire", glm::vec3(-0.15, 0.10, 0.32), _shaderProgram);
     frontLeft->setMesh(tireMesh);
     frontLeft->transform = glm::mat4(glm::scale(frontLeft->transform, glm::vec3(2.5,2.5,2.5)));
     _tires.push_back(frontLeft);
 
-    Tire* frontRight = new Tire("FrontRightTire", glm::vec3(0.15, 0.10, 0.32));
+    Tire* frontRight = new Tire("FrontRightTire", glm::vec3(0.15, 0.10, 0.32), _shaderProgram);
     frontRight->setMesh(tireMesh);
     frontRight->rotate(180, glm::vec3(0,1.0,0));
     frontRight->transform = glm::mat4(glm::scale(frontRight->transform, glm::vec3(2.5,2.5,2.5)));
     _tires.push_back(frontRight);
 
-    Tire* backLeft = new Tire("BackLeftTire", glm::vec3(-0.15, 0.10, -0.27));
+    Tire* backLeft = new Tire("BackLeftTire", glm::vec3(-0.15, 0.10, -0.27), _shaderProgram);
     backLeft->setMesh(tireMesh);
     backLeft->transform = glm::mat4(glm::scale(backLeft->transform, glm::vec3(2.5,2.5,2.5)));
     _tires.push_back(backLeft);
 
-    Tire* backRight = new Tire("BackRightTire", glm::vec3(0.15, 0.10, -0.27));
+    Tire* backRight = new Tire("BackRightTire", glm::vec3(0.15, 0.10, -0.27), _shaderProgram);
     backRight->setMesh(tireMesh);
     backRight->rotate(180, glm::vec3(0,1.0,0));
     backRight->transform = glm::mat4(glm::scale(backRight->transform, glm::vec3(2.5,2.5,2.5)));

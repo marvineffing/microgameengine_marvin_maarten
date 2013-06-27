@@ -7,6 +7,8 @@
 Gameplay::Gameplay(sf::RenderWindow* window) : _window(window)
 {
     laps = 0;
+    _normalProgram = new ShaderProgram("shaders/default.vs", "shaders/default.fs");
+    _skyProgram = new ShaderProgram("shaders/sky.vs", "shaders/sky.fs");
 }
 
 void Gameplay::createCamera()
@@ -17,18 +19,18 @@ void Gameplay::createCamera()
 
 void Gameplay::createWorld()
 {
-    _world = new World("World");
+    _world = new World("World", _normalProgram);
 }
 
 void Gameplay::createLight(glm::vec3 position)
 {
-    _light = new Light("Light", position);
+    _light = new Light("Light", position, _normalProgram);
     _world->add(_light);
 }
 
 void Gameplay::createCar()
 {
-    _raceCar = new RaceCar("Going Turbo", glm::vec3(7,0,0));
+    _raceCar = new RaceCar("Going Turbo", glm::vec3(7,0,0), _normalProgram);
     _raceCar->setMesh( Mesh::load( "models/car.obj") );
     _raceCar->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
     _raceCar->setCollider( new Collider( _raceCar ) );
@@ -37,7 +39,7 @@ void Gameplay::createCar()
 }
 
 void Gameplay::createFinish() {
-    finish = new GameObject("Finish", glm::vec3(7.0, 0.0, 3.0));
+    finish = new GameObject("Finish", glm::vec3(7.0, 0.0, 3.0), _normalProgram);
     //finish->setMesh(Mesh::load("models/finish.obj"));
     finish->setMesh(Mesh::load("models/suzanna.obj"));
     monkey->setColorMap(Texture::load("models/finish.jpg"));
@@ -46,7 +48,7 @@ void Gameplay::createFinish() {
 }
 
 void Gameplay::createObstacle(glm::vec3 position) {
-    monkey = new GameObject("Monkey", position);
+    monkey = new GameObject("Monkey", position, _normalProgram);
     monkey->setMesh(Mesh::load("models/suzanna.obj"));
     monkey->setColorMap(Texture::load("models/monkey.jpg"));
     monkey->setCollider(new Collider(monkey));
@@ -55,7 +57,7 @@ void Gameplay::createObstacle(glm::vec3 position) {
 
 void Gameplay::createTrack(glm::vec3 position)
 {
-    _track = new GameObject("Track", position);
+    _track = new GameObject("Track", position, _normalProgram);
     _track->setMesh( Mesh::load( "models/floor.obj" ) );
     _track->setColorMap( Texture::load( "models/track.jpg" ) );
     _world->add(_track);
@@ -64,7 +66,7 @@ void Gameplay::createTrack(glm::vec3 position)
 
 void Gameplay::createSkybox()
 {
-    _skybox = new Skybox("Skybox", glm::vec3(0.0, 0.0, 0.0));
+    _skybox = new Skybox("Skybox", glm::vec3(0.0, 0.0, 0.0), _skyProgram);
     _skybox->setBehaviour(new MoveSkyBehaviour(_skybox, _raceCar));
     _world->add(_skybox);
 }

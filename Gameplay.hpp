@@ -11,6 +11,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include "ShaderProgram.hpp"
+
 
 class Gameplay {
     private:
@@ -25,6 +27,8 @@ class Gameplay {
         GameObject * monkey;
         GameObject * finish;
         int laps;
+		ShaderProgram * _normalProgram;
+		ShaderProgram * _skyProgram;
 
     public:
         Gameplay(sf::RenderWindow * window);

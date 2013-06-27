@@ -11,6 +11,7 @@
 #include "Texture.hpp"
 #include "Behaviour.hpp"
 #include "FinishCollider.h"
+#include "ShaderProgram.hpp"
 
 class GameObject
 {
@@ -23,13 +24,14 @@ class GameObject
 		Mesh * mesh;
 		Texture * colorMap;
 
-
 		std::vector< GameObject * > children;
+
+		ShaderProgram * _shaderProgram;
 
 	public:
 	    FinishCollider * finishCollider;
 
-		GameObject( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 0.0f, 0.0f, 0.0f ) );
+		GameObject( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 0.0f, 0.0f, 0.0f ), ShaderProgram * shaderProgram = NULL);
 		virtual ~GameObject();
 
 		void translate( glm::vec3 translation );
@@ -60,6 +62,7 @@ class GameObject
         FinishCollider* getFinishCollider();
 
 		void add( GameObject * child );
+		ShaderProgram* getShaderProgram();
 
 	protected:
 

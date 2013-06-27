@@ -2,8 +2,8 @@
 
 #include "Renderer.hpp"
 
-Light::Light( std::string aName, glm::vec3 aPosition )
-:	GameObject( aName, aPosition )
+Light::Light( std::string aName, glm::vec3 aPosition, ShaderProgram* shaderProgram )
+:	GameObject( aName, aPosition, shaderProgram)
 {
 }
 

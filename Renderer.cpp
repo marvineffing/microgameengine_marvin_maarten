@@ -56,7 +56,8 @@ void Renderer::setTime( float aTime )
 
 void Renderer::draw( GameObject * aWorld )
 {
-	program->use(); // make sure default shader program is used
+    //use(aWorld->getShaderProgram());
+	//program->use(aWorld->getShaderProgram()); // make sure default shader program is used
 	glEnable( GL_DEPTH_TEST );
 	glEnable( GL_CULL_FACE ); // defaul GL_BACK
 	glClearColor( 0.1f, 0.1f, 0.1f, 1.0f );

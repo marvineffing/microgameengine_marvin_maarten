@@ -10,7 +10,7 @@ class World : public GameObject
         sf::SoundBuffer soundBuffer;
         sf::Sound sound;
 	public:
-		World( std::string aName = NULL );
+		World( std::string aName = NULL, ShaderProgram* shaderProgram = NULL);
 		virtual ~World();
 
 		void update( float step );

@@ -5,7 +5,6 @@
 
 #include "Hud.hpp"
 #include "Renderer.hpp"
-#include "ShaderProgram.hpp"
 #include "Game.hpp"
 #include "World.hpp"
 #include "Camera.hpp"
@@ -37,7 +36,8 @@ Game::~Game()
 
 void Game::build()
 {
-	_renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
+
+	//_renderer->use(_normalProgram);
 
 	_gameplay->createWorld();
 	_gameplay->createLight(glm::vec3( 2.0f, 10.0f, 5.0f ));

@@ -71,7 +71,6 @@ void Hud::drawSpeed()
 	text1.setPosition(10,50);
 	text2.setPosition(80,50);
 
-	assert ( _window != NULL );
 	if (_window != NULL) {
         _window->draw(text1);
         _window->draw(text2);

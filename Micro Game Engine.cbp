@@ -46,6 +46,8 @@
 		</Linker>
 		<Unit filename="Behaviour.cpp" />
 		<Unit filename="Behaviour.hpp" />
+		<Unit filename="Behaviours/MoveSkyBehaviour.cpp" />
+		<Unit filename="Behaviours/MoveSkyBehaviour.hpp" />
 		<Unit filename="Behaviours/RaceCarBehaviour.cpp" />
 		<Unit filename="Behaviours/RaceCarBehaviour.hpp" />
 		<Unit filename="Camera.cpp" />

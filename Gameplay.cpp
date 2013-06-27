@@ -1,6 +1,8 @@
 #include "Gameplay.hpp"
 #include <iostream>
 #include "Time.hpp"
+#include "Behaviours/RaceCarBehaviour.hpp"
+#include "Behaviours/MoveSkyBehaviour.hpp"
 
 Gameplay::Gameplay(sf::RenderWindow* window) : _window(window)
 {
@@ -54,6 +56,7 @@ void Gameplay::createTrack(glm::vec3 position)
 void Gameplay::createSkybox()
 {
     _skybox = new Skybox("Skybox", glm::vec3(0.0, 0.0, 0.0));
+    _skybox->setBehaviour(new MoveSkyBehaviour(_skybox, _raceCar));
     _world->add(_skybox);
 }
 

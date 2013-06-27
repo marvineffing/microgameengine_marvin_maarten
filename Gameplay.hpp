@@ -9,8 +9,6 @@
 #include "RaceCar.hpp"
 #include "Skybox.hpp"
 
-#include "Behaviours/RaceCarBehaviour.hpp"
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 

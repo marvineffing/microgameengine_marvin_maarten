@@ -33,6 +33,7 @@ class GameObject
 
 		const std::string getName();
 		glm::vec3 getLocation();
+		void setLocation(glm::vec3 newLocation);
 		bool hasCollider();
 
 		glm::mat4 transform;

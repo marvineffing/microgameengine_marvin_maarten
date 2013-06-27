@@ -105,7 +105,6 @@ void RaceCar::steerCar(float step, int direction)
 
 void RaceCar::steerWheels(float step, int direction)
 {
-   // std::cout << "yrot = " << _yrot_wheel << std::endl;
     glm::vec3 rotationAxes = glm::vec3(0,cos(_xrot_wheel),sin(_xrot_wheel));
     if (direction == LEFT && _yrot_wheel <  _yrot_wheel_limit) {
         float angle = step * _yrot_wheel_step;

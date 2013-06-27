@@ -42,6 +42,13 @@ glm::vec3 GameObject::getLocation()
 	return glm::vec3( transform[3][0], transform[3][1], transform[3][2] );
 }
 
+void GameObject::setLocation(glm::vec3 newLocation)
+{
+    transform[3][0] = newLocation.x;
+    transform[3][1] = newLocation.y;
+    transform[3][2] = newLocation.z;
+}
+
 bool GameObject::hasCollider()
 {
 	return collider != NULL;

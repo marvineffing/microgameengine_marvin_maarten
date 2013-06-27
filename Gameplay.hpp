@@ -48,10 +48,11 @@ class Gameplay {
         void crashCar();
 
         World * getWorld();
+        Camera * getCamera();
+        RaceCar * getRaceCar();
 
         int getLaps();
         void incrLaps();
-        RaceCar * getRaceCar();
 
         void draw(); //for laps
 };

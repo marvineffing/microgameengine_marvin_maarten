@@ -14,7 +14,7 @@ Gameplay::Gameplay(sf::RenderWindow* window) : _window(window)
 void Gameplay::createCamera()
 {
     _camera = new Camera("Camera", glm::vec3( -1.0f, 0.9f, -2.0f));
-    _raceCar->add(_camera);
+    //_raceCar->add(_camera);
 }
 
 void Gameplay::createWorld()
@@ -76,6 +76,16 @@ World * Gameplay::getWorld()
     return _world;
 }
 
+Camera * Gameplay::getCamera()
+{
+    return _camera;
+}
+
+RaceCar * Gameplay::getRaceCar()
+{
+    return _raceCar;
+}
+
 void Gameplay::updateCamera() {
     _camera->update(Time::step());
 }
@@ -117,9 +127,4 @@ void Gameplay::draw() {
 	assert ( _window != NULL );
 	_window->draw(text);
 
-}
-
-RaceCar * Gameplay::getRaceCar()
-{
-    return _raceCar;
 }

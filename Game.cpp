@@ -99,6 +99,9 @@ void Game::update(float step)
     World * world = _gameplay->getWorld();
 	assert( world != NULL );
 	world->update( step);
+	Camera * camera = _gameplay->getCamera();
+	if (camera != NULL)
+        camera->update(step);
 	checkCollisions();
 	//checkFinish();
 }
@@ -106,10 +109,15 @@ void Game::update(float step)
 void Game::draw()
 {
     World * world = _gameplay->getWorld();
+    Camera * camera = _gameplay->getCamera();
+    RaceCar * racecar = _gameplay->getRaceCar();
 	assert( _window != NULL );
 	assert( _renderer != NULL );
 	assert( world != NULL );
+	assert( camera != NULL);
+	assert( racecar != NULL);
 
+    camera->draw(_renderer, racecar->transform);
 	_renderer->draw( world );
 	_window->pushGLStates();
 	_hud->draw();

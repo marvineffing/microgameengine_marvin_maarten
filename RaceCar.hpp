@@ -9,6 +9,10 @@
 class RaceCar : public GameObject
 {
     private:
+        sf::Sound sound;
+        sf::SoundBuffer crashSoundBuffer;
+        sf::SoundBuffer startSoundBuffer;
+
         static const float _speed_limit = 10.0f;
         static const float _speed_limit_reverse = -5.0f;
         static const float _acceleration = 0.005f;
@@ -45,6 +49,9 @@ class RaceCar : public GameObject
         void steerWheels(float step, int direction);
         void resetSteerWheels(float step);
         void rotateWheels(float step);
+        void onCollision(GameObject * anObject);
+        void crashCar();
+        void completeLap();
 
         void playHorn();
 

@@ -21,11 +21,8 @@ bool Collider::collides( Collider * otherCollider )
 	float distance = glm::distance( location, otherLocation );
 	if ( distance < radius + otherCollider->radius ) { // in case of colliding
     //todo: stopping behaviour
-					if (sound.getStatus() == sf::Sound::Stopped) {
-                        sound.setBuffer(soundBuffer);
-                        sound.play();
-                    }
 
+        parent->onCollision(otherCollider->parent);
 		std::cout << parent->getName() << " Hits " << otherCollider->parent->getName() << std::endl;
 		return true;
 	};

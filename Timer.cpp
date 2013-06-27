@@ -1,31 +1,28 @@
 #include "Timer.hpp"
 #include "Time.hpp"
+#include <iostream>
 
-Timer::Timer() : _passedTime(0)
+sf::Clock Timer::clock;
+float Timer::currentTime = 0.0f;
+float Timer::lastLap = 0.0f;
+
+void Timer::update()
 {
-
+    currentTime += Time::step();
 }
 
-void Timer::startTimer()
+float Timer::now()
 {
-    _running = true;
+	return currentTime;
 }
-
-float Timer::stopTimer()
-{
-    _running = false;
-    return _passedTime;
+float Timer::getLastLap() {
+    return lastLap;
 }
-
-void Timer::updateTimer()
-{
-    if (_running) {
-        _passedTime += Time::step();
+void Timer::reset(){
+    //omdat de tijd andere na 0.00000xx seconden weer reset. Collision vindt plaatst op meer dan 1 tijdstip.
+    if( currentTime > 5 ) {
+        lastLap = currentTime;
     }
+    currentTime = 0.0f;
 }
 
-void Timer::resetTimer()
-{
-    _running = false;
-    _passedTime = 0;
-}

@@ -5,6 +5,8 @@ RaceCar::RaceCar(std::string name, glm::vec3 position, ShaderProgram* shaderProg
 
 {
     Mesh * tireMesh = Mesh::load("models/cartire.obj");
+    crashSoundBuffer.loadFromFile("sounds/crash.wav");
+    startSoundBuffer.loadFromFile("sounds/finish.wav");
 
     // Tires
     Tire* frontLeft = new Tire("FrontLeftTire", glm::vec3(-0.15, 0.10, 0.32), _shaderProgram);
@@ -100,6 +102,34 @@ void RaceCar::steerCar(float step, int direction)
             rotate(step*_steering,rotationAxes);
         }
         steerWheels(step, direction);
+    }
+}
+
+void RaceCar::onCollision(GameObject * anObject) {
+    if (anObject->getName() == "START") {
+        completeLap();
+    } else if (anObject->getName() == "Monkey") {
+        crashCar();
+    }
+
+}
+
+void RaceCar::crashCar() {
+    if (sound.getStatus() == sf::Sound::Stopped) {
+        sound.setBuffer(crashSoundBuffer);
+        sound.play();
+    }
+    stop();
+    setSpeed(-1);
+}
+
+/**
+* Method to signify a completion of a lap by the car by playing a sound and recording your time.
+**/
+void RaceCar::completeLap() {
+    if (sound.getStatus() == sf::Sound::Stopped) {
+        sound.setBuffer(startSoundBuffer);
+        sound.play();
     }
 }
 

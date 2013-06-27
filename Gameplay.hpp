@@ -41,6 +41,7 @@ class Gameplay {
         void createSkybox();
         void createObstacle(glm::vec3 position);
         void createFinish();
+        void createFinishAlt();
         void updateCamera();
 
         //collision

@@ -117,9 +117,13 @@ bool GameObject::collidesFinish(GameObject * otherGameObject) {
 
 void GameObject::onCollision(  GameObject * otherGameObject )
 {
-	if ( behaviour ) {
-		behaviour->onCollision( otherGameObject );
-	}
+    if (otherGameObject->getName() == "START") {
+        std::cout << "whoop whoop" << std::endl;
+    }
+
+	//if ( behaviour ) {
+		//behaviour->onCollision( otherGameObject );
+	//}
 }
 
 void GameObject::onCollisionFinish( GameObject * otherGameObject) {

@@ -3,6 +3,7 @@
 #include "Time.hpp"
 #include "Behaviours/RaceCarBehaviour.hpp"
 #include "Behaviours/MoveSkyBehaviour.hpp"
+#include "Checkpoint.h"
 
 Gameplay::Gameplay(sf::RenderWindow* window) : _window(window)
 {
@@ -30,7 +31,7 @@ void Gameplay::createLight(glm::vec3 position)
 
 void Gameplay::createCar()
 {
-    _raceCar = new RaceCar("Going Turbo", glm::vec3(7,0,0), _normalProgram);
+    _raceCar = new RaceCar("Going Turbo", glm::vec3(13,0,0), _normalProgram);
     _raceCar->setMesh( Mesh::load( "models/car.obj") );
     _raceCar->setColorMap( Texture::load("models/truck_color_cleantest.jpg") );
     _raceCar->setCollider( new Collider( _raceCar ) );
@@ -45,6 +46,19 @@ void Gameplay::createFinish() {
     monkey->setColorMap(Texture::load("models/finish.jpg"));
     finish->setFinishCollider(new FinishCollider(finish));
     _world->add(finish);
+}
+
+void Gameplay::createFinishAlt() {
+    //Collider * c = new Collider(_raceCar, 2.5f);
+
+    Checkpoint * start = new Checkpoint("START", glm::vec3(13,0.05,7), _normalProgram);
+    start->setColorMap(Texture::load("models/finish.jpg"));
+    start->transform = glm::mat4(glm::scale(start->transform, glm::vec3(2,1,4)));
+    start->rotate(270, glm::vec3(1,0,0));
+    start->setMesh(Mesh::load("models/plane.obj"));
+    start->setCollider(new Collider(start, 0.05f));
+
+    _world->add(start);
 }
 
 void Gameplay::createObstacle(glm::vec3 position) {

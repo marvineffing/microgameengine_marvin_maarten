@@ -1,15 +1,24 @@
-#pragma once
+#ifndef TIMER_H
+#define TIMER_H
+
+#include <SFML/System.hpp>
 
 class Timer
 {
-    private:
-        float _passedTime;
-        bool _running;
-    public:
-        Timer();
+	private: // data members
+		static sf::Clock clock;
+		static float currentTime;
+        static float lastLap;
 
-        void startTimer();
-        float stopTimer();
-        void resetTimer();
-        void updateTimer();
+	private: // disable creation of time object
+		Timer(){}
+	public: // functons
+		static void update();
+		static float now();
+		static float getLastLap();
+		static void reset();
+
 };
+
+#endif // TIMER_H
+

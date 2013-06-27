@@ -14,6 +14,7 @@
 #include "Collider.hpp"
 #include "Gameplay.hpp"
 #include "Skybox.hpp"
+#include "Timer.hpp"
 
 Game::Game()
 :	_window(NULL), _hud(NULL), _renderer(NULL)
@@ -46,7 +47,8 @@ void Game::build()
 	_gameplay->createCamera();
     _gameplay->createTrack(glm::vec3(0.0,0.0,0.0));
     _gameplay->createObstacle(glm::vec3(0.0, 0.0, 9.0));
-    //_gameplay->createFinish();
+    _gameplay->createFinishAlt();
+    //gameplay->createFinish();
 }
 
 void Game::run()
@@ -56,6 +58,7 @@ void Game::run()
 	_running = true;
 	while ( _running ) {
 		Time::update();
+		Timer::update();
 		FPS::update();
 		control();
 		if ( _running ) { // control may have changed running;
@@ -133,7 +136,10 @@ bool Game::checkCollisions()
     World * _world = _gameplay->getWorld();
     retVal = _world->checkCollisions();
     if (retVal) {
-        _gameplay->crashCar();
+        //if finishline just continue
+
+        //else:
+        //_gameplay->crashCar();
     }
 	return retVal;
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "FinishCollider.h"
 
 #include <SFML/Audio.hpp>
 
@@ -10,14 +11,15 @@ private:
     sf::Sound sound;
     sf::SoundBuffer soundBuffer;
 	protected:
-		GameObject * parent;
-		float radius;
+
+
 
 	public:
 		Collider( GameObject * aParent, float aRadius = 1.0f );
 		virtual ~Collider();
 
 		virtual bool collides( Collider * otherCollider );
-		virtual bool collidesWithFinishLine( Collider * otherCollider);
-
+		virtual bool collidesWithFinish( FinishCollider * otherCollider);
+        float radius;
+        GameObject * parent;
 };

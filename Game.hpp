@@ -38,5 +38,6 @@ class Game
 		void update(float step);
 		void draw();
 		bool checkCollisions();
+		bool checkFinish();
 
 };

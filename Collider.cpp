@@ -36,8 +36,11 @@ bool Collider::collides( Collider * otherCollider )
 * Returns wether or not Object collides with finish line so that a lap may be registered.
 * TODO: increase lap # when colliding in Gameplay
 **/
-bool Collider::collidesWithFinishLine(Collider * otherCollider) {
+bool Collider::collidesWithFinish(FinishCollider * otherCollider) {
     bool retVal = false;
+
+    std::cout << "Collided with finish." << std::endl;
+    return retVal;
 
 }
 

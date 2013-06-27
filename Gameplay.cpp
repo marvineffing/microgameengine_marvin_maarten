@@ -36,6 +36,15 @@ void Gameplay::createCar()
     _world->add(_raceCar);
 }
 
+void Gameplay::createFinish() {
+    finish = new GameObject("Finish", glm::vec3(7.0, 0.0, 3.0));
+    //finish->setMesh(Mesh::load("models/finish.obj"));
+    finish->setMesh(Mesh::load("models/suzanna.obj"));
+    monkey->setColorMap(Texture::load("models/finish.jpg"));
+    finish->setFinishCollider(new FinishCollider(finish));
+    _world->add(finish);
+}
+
 void Gameplay::createObstacle(glm::vec3 position) {
     monkey = new GameObject("Monkey", position);
     monkey->setMesh(Mesh::load("models/suzanna.obj"));
@@ -84,13 +93,14 @@ int Gameplay::getLaps() {
 
 void Gameplay::incrLaps() {
     laps++;
+    std::cout << " Player has crossed finish line." << std::endl;
 }
 
 void Gameplay::draw() {
 
     glDisable( GL_CULL_FACE );
     char laps[] = "0/1 laps";
-    sprintf( laps, "%1d", getLaps() );
+    sprintf( laps, "Laps: %1d", getLaps() );
 
     sf::Text text( laps );
 	//text.setFont(font);

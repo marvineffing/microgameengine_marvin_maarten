@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 #include "FPS.hpp"
 #include "Hud.hpp"
+#include "Timer.hpp"
 
 Hud::Hud( sf::RenderWindow * aWindow , Gameplay * gameplay)
 :	_window( aWindow ), _gameplay(gameplay)
@@ -79,29 +80,29 @@ void Hud::drawSpeed()
 
 void Hud::drawTime()
 {
-    char time[] = "test";
-    char label[] = "fastest lap: ";
+    char timer[64] = "Ronde tijd: ";
+    char time[] = "00.00";
+    sprintf(time, "%.2f", Timer::now() );
+    strcat(timer, time);
 
-    // TODO get time
-    int t = 0;
+    sf::Text txt( timer );
+	txt.setCharacterSize(30);
+	txt.setStyle(sf::Text::Bold);
+	txt.setColor(sf::Color::White);
+	txt.setPosition( 10, 100);
+	_window->draw(txt);
 
+    //last round
+    char best[64] = "Beste ronde tijd: ";
+    char bestTime[] = "00.00";
+    sprintf(bestTime, "%.2f", Timer::getBestLap() );
+    strcat(best, bestTime);
 
-    if (t > 0) {
-        sprintf(time, "%3i", t);
-        sf::Text labelText(label);
-        sf::Text timeText(time);
-        labelText.setCharacterSize(20);
-        timeText.setCharacterSize(20);
-        labelText.setStyle(sf::Text::Bold);
-        timeText.setStyle(sf::Text::Bold);
-        labelText.setColor(sf::Color::White);
-        timeText.setColor(sf::Color::White);
-        labelText.setPosition(625, 10);
-        timeText.setPosition(740, 10);
+    sf::Text txt2( best );
+	txt2.setCharacterSize(30);
+	txt2.setStyle(sf::Text::Bold);
+	txt2.setColor(sf::Color::White);
+	txt2.setPosition( 10,150);
+	_window->draw(txt2);
 
-        if(_window != NULL) {
-            _window->draw(labelText);
-            _window->draw(timeText);
-        }
-    }
 }

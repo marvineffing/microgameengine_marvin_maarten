@@ -9,6 +9,7 @@ class Timer
 		static sf::Clock clock;
 		static float currentTime;
         static float lastLap;
+        static float bestLap;
 
 	private: // disable creation of time object
 		Timer(){}
@@ -17,6 +18,7 @@ class Timer
 		static float now();
 		static float getLastLap();
 		static void reset();
+		static float getBestLap();
 
 };
 

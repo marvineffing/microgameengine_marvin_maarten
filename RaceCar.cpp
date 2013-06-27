@@ -1,4 +1,5 @@
 #include "RaceCar.hpp"
+#include "Timer.hpp"
 
 RaceCar::RaceCar(std::string name, glm::vec3 position, ShaderProgram* shaderProgram)
     : GameObject("RaceCar", position, shaderProgram), _shaderProgram(shaderProgram), _speed(0), _xrot_wheel(0), _yrot_wheel(0)
@@ -108,6 +109,7 @@ void RaceCar::steerCar(float step, int direction)
 void RaceCar::onCollision(GameObject * anObject) {
     if (anObject->getName() == "START") {
         completeLap();
+        Timer::reset();
     } else if (anObject->getName() == "Monkey") {
         crashCar();
     }

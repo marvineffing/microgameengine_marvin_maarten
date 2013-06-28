@@ -34,19 +34,19 @@ void Hud::drawFPS()
 	sf::Text text1(fpsLabel);
 	sf::Text text2(fps);
 	//text.setFont(font);
-	text1.setCharacterSize(30);
-	text2.setCharacterSize(30);
+	text1.setCharacterSize(10);
+	text2.setCharacterSize(10);
 	text1.setStyle(sf::Text::Bold);
 	text2.setStyle(sf::Text::Bold);
 	text1.setColor(sf::Color::White);
 	text2.setColor(sf::Color::White);
-	text1.setPosition( 10,10);
-	text2.setPosition( 80,10);
+	text1.setPosition( 10,580);
+	text2.setPosition( 50,580);
 
 
 	// Draw it
 	//std::cout << "Drawing text" << std::endl;
-	if (_window != NULL) {
+	if (_window != NULL && sf::Keyboard::isKeyPressed(sf::Keyboard::Tilde)) {
         _window->draw(text1);
         _window->draw(text2);
 	}
@@ -64,13 +64,13 @@ void Hud::drawSpeed()
     sf::Text text1(speed);
     sf::Text text2(speedLabel);
     text1.setCharacterSize(30);
-    text2.setCharacterSize(30);
+    text2.setCharacterSize(20);
 	text1.setStyle(sf::Text::Bold);
 	text2.setStyle(sf::Text::Bold);
 	text1.setColor(sf::Color::White);
 	text2.setColor(sf::Color::White);
-	text1.setPosition(10,50);
-	text2.setPosition(80,50);
+	text1.setPosition(10,10);
+	text2.setPosition(80,15);
 
 	if (_window != NULL) {
         _window->draw(text1);
@@ -86,23 +86,25 @@ void Hud::drawTime()
     strcat(timer, time);
 
     sf::Text txt( timer );
-	txt.setCharacterSize(30);
+	txt.setCharacterSize(20);
 	txt.setStyle(sf::Text::Bold);
 	txt.setColor(sf::Color::White);
-	txt.setPosition( 10, 100);
+	txt.setPosition( 620, 10);
 	_window->draw(txt);
 
     //last round
     char best[64] = "Beste ronde tijd: ";
     char bestTime[] = "00.00";
-    sprintf(bestTime, "%.2f", Timer::getBestLap() );
-    strcat(best, bestTime);
+    float bestLapTime = Timer::getBestLap();
+    if (bestLapTime > 0) {
+        sprintf(bestTime, "%.2f", Timer::getBestLap() );
+        strcat(best, bestTime);
 
-    sf::Text txt2( best );
-	txt2.setCharacterSize(30);
-	txt2.setStyle(sf::Text::Bold);
-	txt2.setColor(sf::Color::White);
-	txt2.setPosition( 10,150);
-	_window->draw(txt2);
-
+        sf::Text txt2( best );
+        txt2.setCharacterSize(20);
+        txt2.setStyle(sf::Text::Bold);
+        txt2.setColor(sf::Color::White);
+        txt2.setPosition( 500,550);
+        _window->draw(txt2);
+    }
 }

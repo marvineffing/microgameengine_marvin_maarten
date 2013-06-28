@@ -9,7 +9,4 @@ class Checkpoint : public GameObject
         Checkpoint( std::string aName = NULL, glm::vec3 aPosition = glm::vec3(0.0f ,0.0f, 0.0f), ShaderProgram * shaderProgram = NULL );
         virtual ~Checkpoint();
         virtual void onCollision(GameObject * otherGameObject);
-    protected:
-
-    private:
 };

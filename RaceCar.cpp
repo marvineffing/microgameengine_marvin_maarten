@@ -1,8 +1,11 @@
 #include "RaceCar.hpp"
 #include "Timer.hpp"
 
+#include <GLM/gtx/quaternion.hpp>
+#include <GLM/gtc/quaternion.hpp>
+
 RaceCar::RaceCar(std::string name, glm::vec3 position, ShaderProgram* shaderProgram)
-    : GameObject("RaceCar", position, shaderProgram), _shaderProgram(shaderProgram), _speed(0), _xrot_wheel(0), _yrot_wheel(0)
+    : GameObject("RaceCar", position, shaderProgram), _shaderProgram(shaderProgram), _speed(0), _xrot_wheel(0), _yrot_wheel(0), _hitCounter(0)
 
 {
     Mesh * tireMesh = Mesh::load("models/cartire.obj");
@@ -94,7 +97,6 @@ void RaceCar::steerCar(float step, int direction)
         if (_speed < 0) {
             rotate(step*(0-_steering),rotationAxes);
         }
-        steerWheels(step, direction);
     } else if (direction ==  RIGHT) {
         if (_speed > 0) {
             rotate(step*(0-_steering),rotationAxes);
@@ -102,14 +104,24 @@ void RaceCar::steerCar(float step, int direction)
         if (_speed < 0) {
             rotate(step*_steering,rotationAxes);
         }
-        steerWheels(step, direction);
     }
 }
 
 void RaceCar::onCollision(GameObject * anObject) {
     if (anObject->getName() == "START") {
-        completeLap();
-        Timer::reset();
+        if (_hitCounter == 0) {
+            Timer::start();
+            completeLap();
+        }
+
+        //omdat de tijd andere na 0.00000xx seconden weer reset. Collision vindt plaatst op meer dan 1 tijdstip.
+        if (Timer::now() > 5) {
+            completeLap();
+            ++_hitCounter;
+            if (_hitCounter == 1)
+                Timer::setBestTime(1000.00);
+            Timer::reset();
+        }
     } else if (anObject->getName() == "Monkey") {
         crashCar();
     }
@@ -135,59 +147,43 @@ void RaceCar::completeLap() {
     }
 }
 
-void RaceCar::steerWheels(float step, int direction)
+void RaceCar::rotateWheels(float step, int direction)
 {
-    glm::vec3 rotationAxes = glm::vec3(0,cos(_xrot_wheel),sin(_xrot_wheel));
-    if (direction == LEFT && _yrot_wheel <  _yrot_wheel_limit) {
-        float angle = step * _yrot_wheel_step;
-        _yrot_wheel += angle;
-        _tires[0]->rotate(angle, rotationAxes);
-        _tires[1]->rotate(angle, rotationAxes);
+    float xAngle = 200 * step * _speed;
+    _xrot_wheel += xAngle;
+//    _tires[0]->rotate(xAngle,glm::vec3(cos(_yrot_wheel),0,-sin(_yrot_wheel)));
+//    _tires[1]->rotate(-xAngle,glm::vec3(cos(_yrot_wheel),0,-sin(_yrot_wheel)));
+//    _tires[2]->rotate(xAngle,glm::vec3(1,0,0));
+//    _tires[3]->rotate(-xAngle,glm::vec3(1,0,0));
+    _tires[0]->rotate(xAngle,glm::vec3(1,0,0));
+    _tires[1]->rotate(-xAngle,glm::vec3(1,0,0));
+    _tires[2]->rotate(xAngle,glm::vec3(1,0,0));
+    _tires[3]->rotate(-xAngle,glm::vec3(1,0,0));
 
-    } else if (direction == RIGHT && _yrot_wheel > (0-_yrot_wheel_limit)) {
-        float angle = step * (0-_yrot_wheel_step);
-        _yrot_wheel += angle;
-        _tires[0]->rotate(angle,rotationAxes);
-        _tires[1]->rotate(angle,rotationAxes);
-    }
-}
-
-void RaceCar::resetSteerWheels(float step)
-{
-    glm::vec3 rotationAxes = glm::vec3(0,1,0);
-    if (_yrot_wheel < (_yrot_wheel_step*step) && _yrot_wheel > (0-(_yrot_wheel_step*step)))
-        _yrot_wheel = 0;
-    if (_yrot_wheel > 0) {
-        float angle = step * (0-_yrot_wheel_step);
-        _yrot_wheel += angle;
-        _tires[0]->rotate(angle, rotationAxes);
-        _tires[1]->rotate(angle, rotationAxes);
-    } else if (_yrot_wheel < 0) {
-        float angle = step * _yrot_wheel_step;
-        _yrot_wheel += angle;
-        _tires[0]->rotate(angle, rotationAxes);
-        _tires[1]->rotate(angle, rotationAxes);
-    }
-}
-
-void RaceCar::rotateWheels(float step)
-{
-    if (_speed != 0) {
-        for (unsigned int i = 0; i < _tires.size(); ++i) {
-            float angle = 150 * step * _speed;
-            _xrot_wheel += angle;
-            if (_xrot_wheel > 360)
-                _xrot_wheel -= 360;
-            if (_xrot_wheel < 0)
-                _xrot_wheel += 360;
-
-            if (i == 0 || i == 1) {
-                _tires[i]->rotate(angle,glm::vec3(cos(_yrot_wheel),0,sin(_yrot_wheel)));
-            } else {
-                _tires[i]->rotate(angle,glm::vec3(1,0,0));
-            }
-        }
-    }
+//    float yAngle = step * _yrot_wheel_step;
+//    if (direction == LEFT) {
+//        _yrot_wheel += yAngle;
+//        _tires[0]->rotate(yAngle, glm::vec3(0,cos(_xrot_wheel),sin(_yrot_wheel)));
+//        _tires[1]->rotate(yAngle, glm::vec3(0,cos(_xrot_wheel),sin(_yrot_wheel)));
+////        _tires[0]->setAngle(yAngle, glm::vec3(0,1,0));
+////        _tires[1]->setAngle(yAngle, glm::vec3(0,1,0));
+//    } else if (direction == RIGHT) {
+//        _yrot_wheel -= yAngle;
+//        _tires[0]->rotate(yAngle*-1, glm::vec3(0,cos(_xrot_wheel),sin(_yrot_wheel)));
+//        _tires[1]->rotate(yAngle*-1, glm::vec3(0,cos(_xrot_wheel),sin(_yrot_wheel)));
+////        _tires[0]->setAngle(yAngle*-1, glm::vec3(0,1,0));
+////        _tires[1]->setAngle(yAngle*-1, glm::vec3(0,1,0));
+//    } else if (direction == CENTER) {
+//        if (_yrot_wheel > 0) {
+//            _yrot_wheel -= yAngle;
+//            _tires[0]->setAngle(yAngle*-1, glm::vec3(0,cos(_xrot_wheel),sin(_yrot_wheel)));
+//            _tires[1]->setAngle(yAngle*-1, glm::vec3(0,cos(_xrot_wheel),sin(_yrot_wheel)));
+//        } else if (_yrot_wheel < 0) {
+//            _yrot_wheel += yAngle;
+//            _tires[0]->setAngle(yAngle, glm::vec3(0,cos(_xrot_wheel),sin(_yrot_wheel)));
+//            _tires[1]->setAngle(yAngle, glm::vec3(0,cos(_xrot_wheel),sin(_yrot_wheel)));
+//        }
+//    }
 }
 
 void RaceCar::correctSpeed()
@@ -199,9 +195,9 @@ void RaceCar::correctSpeed()
 
 void RaceCar::playHorn()
 {
-//    if (_sound.getStatus() == sf::Sound::Stopped) {
-//        _sound.play();
-//    }
+    if (_sound.getStatus() == sf::Sound::Stopped) {
+        _sound.play();
+    }
 }
 
 float RaceCar::getSpeed()

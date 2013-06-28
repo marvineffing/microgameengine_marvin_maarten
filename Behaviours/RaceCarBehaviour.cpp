@@ -16,21 +16,21 @@ void RaceCarBehaviour::update(float step)
         _raceCar->decelerate(step);
     }
 
-    // brakeing
+    // braking
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         _raceCar->brake(step);
     }
 
     // steering
+    int direction = _raceCar->CENTER;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        _raceCar->steerCar(step, _raceCar->LEFT);
+        direction = _raceCar->LEFT;
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        _raceCar->steerCar(step, _raceCar->RIGHT);
-    } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        _raceCar->resetSteerWheels(step);
+        direction = _raceCar->RIGHT;
     }
 
-    _raceCar->rotateWheels(step);
+    _raceCar->rotateWheels(step, direction);
+    _raceCar->steerCar(step, direction);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
         _raceCar->playHorn();

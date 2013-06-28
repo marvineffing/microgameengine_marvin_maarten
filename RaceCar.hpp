@@ -28,6 +28,7 @@ class RaceCar : public GameObject
         float _speed;
         std::vector<Tire*> _tires;
         ShaderProgram * _shaderProgram;
+        int _hitCounter;
 
         sf::SoundBuffer _soundBuffer;
         sf::Sound _sound;
@@ -37,6 +38,7 @@ class RaceCar : public GameObject
     public:
         static const int LEFT = 0;
         static const int RIGHT = 1;
+        static const int CENTER = 2;
 
         RaceCar(std::string name, glm::vec3 position, ShaderProgram* shaderProgram);
 
@@ -46,9 +48,7 @@ class RaceCar : public GameObject
         void stop();
         void reverseAccelerate(float step);
         void steerCar(float step, int direction);
-        void steerWheels(float step, int direction);
-        void resetSteerWheels(float step);
-        void rotateWheels(float step);
+        void rotateWheels(float step, int direction);
         void onCollision(GameObject * anObject);
         void crashCar();
         void completeLap();

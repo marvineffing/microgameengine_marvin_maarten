@@ -16,10 +16,10 @@ class Timer
 	public: // functons
 		static void update();
 		static float now();
-		static float getLastLap();
+		static float start();
 		static void reset();
 		static float getBestLap();
-
+        static void setBestTime(float time);
 };
 
 #endif // TIMER_H

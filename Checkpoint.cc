@@ -12,5 +12,4 @@ Checkpoint::~Checkpoint()
 }
 
 void Checkpoint::onCollision(GameObject * otherGameObject) {
-    Timer::reset();
 }
